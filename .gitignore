@@ -1,5 +1,57 @@
-# History files
-.Rhistory
+#############
+## Typical .gitignore file for OUHSC BBMC repositories
+#############
+# In base directory
+README.html
+
+#In DocumentationGlobal directory
+Gotchas.html
+PatternReportDesign.html
+PatternReportRun.html
+ReportChecklist.html
+ResourcesInstallation.html
+ResourcesOfficial.html
+ResourcesOpinions.html
+ProjectGuidelines.html
+
+#Anywhere
+*.zip
+*.Zip
+*.ZIP
+*.Rhistory
+*.Rproj.user
+
+#I'm afriad this might contain PHI if someone knew how to decode it.
+us.stackdump 
+
+#Keep data of the repository, in case PHI has snuck in by accident.
+*.rdata
+*.Rdata
+*.RData
+*.RDATA
+*.RDS
+*.rds
+*.csv
+*.txt
+*.mdb
+*.accdb
+*.sav
+*.sas7bdat
+*.xls
+*.xlsx
+
+#Sometimes data files are legitimate (and PHI-free).  In these cases, you can explicitly specify files to include, and upload to the central server.  Put an exclamation point in front of it.
+!RecruitmentProductivity/RecruitingZones/ZipcodesToZone.csv
+
+#For LaTeX
+*.tex
+*.synctex.gz
+*.log
+
+#Exclude cache files created when knitr generates a report.
+cache/
+*/cache/
+*/*/cache/
 
 # Example code in package build process
 *-Ex.R

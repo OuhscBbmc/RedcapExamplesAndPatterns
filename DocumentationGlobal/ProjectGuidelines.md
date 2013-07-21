@@ -7,4 +7,5 @@ This document is a collection of guidelines, practices & patterns that I'd like 
 ### Variable Naming
 1. When the REDCap database has already established a name, try to follow that style. {Oct 28, 2012}
 1. When possible use no underscores, and capitalize the first letter of each word (eg, RaceBlack, RaceWhite.) {Oct 28, 2012}
+1. REDCap doesn't allow uppercase letters in its variable names, so maybe we should adopt the all_lowercase_letters_separated_by_underscores. {Added July 21, 2013}
 1. Acronyms that are three or more letters are capitalized like a real word (eg, GedMale, HSDiplomaMale) {Oct 28, 2012}
