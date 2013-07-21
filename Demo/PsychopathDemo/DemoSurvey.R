@@ -32,7 +32,7 @@ CreatePsychopathResponseBarGraph <- function( characteristic = '', gender = '', 
 ############################
 
 { #This bracket permits the 'else' clause (because it's located on the top layer of the code.)
-  if( basename(getwd()) == "MReporting" )
+  if( basename(getwd()) == "RedcapApiExample" )
     pathDirectoryCode <- file.path(getwd(), "Dal", "DemoPsychopathExtractor.R")
   else if( basename(getwd()) == "PsychopathDemo" )
     pathDirectoryCode <- file.path(dirname(dirname(getwd())), "Dal", "DemoPsychopathExtractor.R")
@@ -40,7 +40,7 @@ CreatePsychopathResponseBarGraph <- function( characteristic = '', gender = '', 
     stop(paste0("The working directory '", basename(getwd()),"' was not anticipated.  Please go near the top of the 'Aim2a.R' code and add this new location."))
 }
 
-if( !file.exists(pathDirectoryCode) ) stop(paste0("The file '", pathDirectoryCode, "' could not be found.  Check the path.  For this to work correctly, the 'MReporting.Rproj' needed to be opend in RStudio.  Otherwise the working directory."))
+if( !file.exists(pathDirectoryCode) ) stop(paste0("The file '", pathDirectoryCode, "' could not be found.  Check the path.  For this to work correctly, the '*.Rproj' needed to be opend in RStudio.  Otherwise the working directory won't be set correctly."))
 source(pathDirectoryCode)
 if( is.null(demods) ) stop("The extracting code did not run properly.  The data.frame 'demods' should not be null.")
 
