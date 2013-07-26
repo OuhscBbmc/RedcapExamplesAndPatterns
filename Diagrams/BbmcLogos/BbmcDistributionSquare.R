@@ -23,10 +23,10 @@ g <- ggplot(data.frame(x=seq(from=0, to=10, length=5)), aes(x)) +
   #labs(x="Biomedical and Behavioral Methodology CORE", y=NULL, main=NULL) +
   labs(x=NULL, y=NULL, main=NULL) +
 #   annotate(geom="text", x=1, y=.4, label="BBMC", hjust=0, size=28, color=color2, fontface="bold") +
-  annotate(geom="text", x=0, y=.55, label="beta*beta*Mu*italic(C)", parse=TRUE, hjust=0, vjust=1, 
-           size=19, color=color1, fontface="bold") +  
-  annotate(geom="text", x=9.9, y=.3, label="OUHSC\nPediatrics", hjust=1, vjust=1, lineheight=.7,
-           size=7, color=color2) +  
+  annotate(geom="text", x=9.85, y=.55, label="beta*beta*Mu*italic(C)", parse=TRUE, hjust=1, vjust=1, 
+           size=18, color=color1, fontface="bold") +  
+#   annotate(geom="text", x=9.9, y=.3, label="OUHSC\nPediatrics", hjust=1, vjust=1, lineheight=.7,
+#            size=7, color=color2) +  
   
   theme_bw() +
   theme(panel.grid=element_blank()) +
