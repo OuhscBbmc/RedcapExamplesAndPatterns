@@ -22,6 +22,7 @@ packagesToInstall <- c("RCurl" #For interacting with the REDCap API
                        , "digest" #Creates SHA hashes for the recruiting database
                        , "random" #Creates random numbers for salts
                        , "xtable" #Creates formatted tables. Especially nice for LaTeX
+                       , "modeest" #Estimating the mode of unimodal distributions
                        ) 
 #"devtools",
 
