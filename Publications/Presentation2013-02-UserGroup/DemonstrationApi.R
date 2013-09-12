@@ -15,7 +15,8 @@ rawCsvText <- RCurl::postForm(
   content='record',
   format='csv', 
   type='flat', 
-  .opts=curlOptions(ssl.verifypeer=FALSE)
+  .opts=curlOptions(cainfo="./Dal/Certs/ca-bundle.crt")
+#   .opts=curlOptions(ssl.verifypeer=FALSE) #If you receive an error message regarding the SSL, please see https://github.com/OuhscBbmc/RedcapGovernanceDocs/issues/12#issuecomment-24347453
 )
 
 #############################
