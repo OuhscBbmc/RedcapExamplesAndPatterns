@@ -4,6 +4,8 @@
 **Report Description**: Results of this survey are not real.  This was only a demo.
 
 
+
+
 <!-- Point knitr to the underlying code file so it knows where to look for the chunks. -->
 
 
@@ -22,6 +24,13 @@
 
 <!-- Load the dataset.  Suppress the output. -->
 
+```
+The following `from` values were not present in `x`: redcap_survey_timestamp, redcap_survey_identifier
+```
+
+```
+Error: replacement has 0 rows, data has 90
+```
 
 
 ### Gender of Demo Participants

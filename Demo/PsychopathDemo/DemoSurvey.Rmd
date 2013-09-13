@@ -4,13 +4,17 @@
 **Report Description**: Results of this survey are not real.  This was only a demo.
 
 
+```{r, echo=FALSE, message=F} 
+#Set the chunks' working directory to the repository's base directory; this assumes the report is nested inside of two directories.
+opts_knit$set(root.dir='../../')  #Don't combine this call with any other chunk -espeically one that uses file paths.
+```
 <!-- Point knitr to the underlying code file so it knows where to look for the chunks. -->
 ```{r, echo=FALSE, message=FALSE}
 
 options(width=180)
 opts_chunk$set(comment="", warning=FALSE, echo=TRUE, tidy=FALSE, size="small")
 require(xtable)
-pathSourceCode <- file.path(getwd(), "DemoSurvey.R")
+pathSourceCode <- "./Demo/PsychopathDemo/DemoSurvey.R"
 
 #This allows knitr to call chunks tagged in the underlying PrototypeCode.R file.
 read_chunk(pathSourceCode) 

@@ -31,14 +31,16 @@ CreatePsychopathResponseBarGraph <- function( characteristic = '', gender = '', 
 ############################
 ############################
 
-{ #This bracket permits the 'else' clause (because it's located on the top layer of the code.)
-  if( basename(getwd()) == "RedcapApiExample" )
-    pathDirectoryCode <- file.path(getwd(), "Dal", "DemoPsychopathExtractor.R")
-  else if( basename(getwd()) == "PsychopathDemo" )
-    pathDirectoryCode <- file.path(dirname(dirname(getwd())), "Dal", "DemoPsychopathExtractor.R")
-  else
-    stop(paste0("The working directory '", basename(getwd()),"' was not anticipated.  Please go near the top of the 'Aim2a.R' code and add this new location."))
-}
+# { #This bracket permits the 'else' clause (because it's located on the top layer of the code.)
+#   if( basename(getwd()) == "RedcapExample" )
+#     pathDirectoryCode <- file.path(getwd(), "Dal", "DemoPsychopathExtractor.R")
+#   else if( basename(getwd()) == "PsychopathDemo" )
+#     pathDirectoryCode <- file.path(dirname(dirname(getwd())), "Dal", "DemoPsychopathExtractor.R")
+#   else
+#     stop(paste0("The working directory '", basename(getwd()),"' was not anticipated.  Please go near the top of the 'DemoSurvey' code and add this new location."))
+# }
+
+pathDirectoryCode <- "./Dal/DemoPsychopathExtractor.R"
 
 if( !file.exists(pathDirectoryCode) ) stop(paste0("The file '", pathDirectoryCode, "' could not be found.  Check the path.  For this to work correctly, the '*.Rproj' needed to be opend in RStudio.  Otherwise the working directory won't be set correctly."))
 source(pathDirectoryCode)
