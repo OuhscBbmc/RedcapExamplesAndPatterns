@@ -16,6 +16,8 @@ packagesToInstall <- c(
    , "lubridate" #Consistent/convienent function signatures for manipulating dates
    , "evaluate" #A package that Hadley et al use a lot in their packages.  It helps when things are passed by reference.
    , "colorspace" #Explicit control over the HCL color scheme
+   , "rjags" #Interact with the Bayesian modeling software, JAGS
+   , "R2OpenBUGS" #Interact with the Bayesian modeling software, OpenBugs
    , "RColorBrewer" #Explicit control over the Color Brewer colors.  See http://colorbrewer2.org/
    , "Rcpp" #Optimizing some intensive functions
    , "wordcloud" #Creating the graphics of word frequencies
