@@ -28,6 +28,11 @@ packagesToInstall <- c(
    , "modeest" #Estimating the mode of unimodal distributions
    , "classInt" #A package for choosing univariate class intervals for mapping or other graphics purposes
    , "foreign" #Reads data in other formats
+     , "lme4" #Multilevel models
+     , "car" #accompanies Fox, J. and Weisberg, S., An R Companion to Applied Regression,
+     , "R2WinBUGS" #Interact with the Bayesian modeling software, WinBugs
+     , "sp" #Spatial analysis
+     , "spdep" #Spatial dependence; builds on 'sp'
 ) 
 #"devtools",
 
