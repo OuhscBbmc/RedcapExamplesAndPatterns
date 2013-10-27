@@ -1,5 +1,6 @@
 #This isn't for REDCap specifically, but a lot of our big project use SQL Server for some roles.  
 #  This seemed like the best place to put this code for now.  It probably deserves to be in some package.
+#  It should also be encapsulted in functions.
 
 require(RODBC)
 
