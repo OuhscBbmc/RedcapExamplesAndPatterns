@@ -30,6 +30,7 @@ packagesToInstall <- c(
   , "sp" #Spatial analysis
   , "spdep" #Spatial dependence; builds on 'sp', "xtable" #Creates formatted tables. Especially nice for LaTeX
   , "stringr" #Consistent/convienent function signatures for manipulating text
+  , "testit" #has the useful `assert()` function
   , "tm" #Text Mining
   , "wordcloud" #Creating the graphics of word frequencies  
 ) 
