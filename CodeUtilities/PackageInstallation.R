@@ -13,6 +13,8 @@ packagesToInstall <- c(
   , "foreign" #Reads data in other formats
   , "ggplot2" #Graphing
   , "ggthemes" #Extra themes, scales and geoms for ggplot
+  , "googleVis" #JavaScript-based visualizations, like scrollable tables
+  , "ggmap" #Maps & graphics, based on ggplot
   , "knitr" #For reporting
   , "lme4" #Multilevel models
   , "lubridate" #Consistent/convienent function signatures for manipulating dates
@@ -30,8 +32,12 @@ packagesToInstall <- c(
   , "sp" #Spatial analysis
   , "spdep" #Spatial dependence; builds on 'sp', "xtable" #Creates formatted tables. Especially nice for LaTeX
   , "stringr" #Consistent/convienent function signatures for manipulating text
+  , "testit" #Light testing framework, includes useful `assert()` function.
+  , "testthat" #Heavy testing framework
   , "tm" #Text Mining
   , "wordcloud" #Creating the graphics of word frequencies  
+  , "xtable" #Formats tables, especially for LaTeX output.
+  , "zipcode" #Database of zipcodes and their lat & long; also useful for flagging bad zipcodes
 ) 
 
 for( packageName in packagesToInstall ) {
