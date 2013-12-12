@@ -16,12 +16,14 @@ packagesToInstall <- c(
   , "googleVis" #JavaScript-based visualizations, like scrollable tables
   , "ggmap" #Maps & graphics, based on ggplot
   , "knitr" #For reporting
+  , "lavaan" #Latent models with Mplus syntax
   , "lme4" #Multilevel models
   , "lubridate" #Consistent/convienent function signatures for manipulating dates
   , "modeest" #Estimating the mode of unimodal distributions
   , "plyr" #Important for most of our data manipulation
   , "R2OpenBUGS" #Interact with the Bayesian modeling software, OpenBugs
   , "R2WinBUGS" #Interact with the Bayesian modeling software, WinBugs
+  , "R2PPT" #Generates PowerPoint slides
   , "random" #Creates random numbers for salts
   , "RColorBrewer" #Explicit control over the Color Brewer colors.  See http://colorbrewer2.org/
   , "Rcpp" #Optimizing some intensive functions
