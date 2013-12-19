@@ -14,10 +14,11 @@ columnsToWrite <- c("ID", "NameFull", "StartDate", "StopDate", "ElapsedMonths", 
                     "Position", "Comments",  "PersonID_1", "PersonID_2", "ReviewDate", "UploadToSqlDate")
 ds <- ds[, columnsToWrite]
 
-startTime <- Sys.time()
+startTime <- base::Sys.time()
 dbTable <- "Osdh.tblNurseStartStopDate"
-channel <- RODBC::odbcConnect("MiechvEvaluation") #getSqlTypeInfo("Microsoft SQL Server") 
-odbcGetInfo(channel)
+channel <- RODBC::odbcConnect("MiechvEvaluation") 
+RODBC::getSqlTypeInfo("Microsoft SQL Server") 
+RODBC::odbcGetInfo(channel)
 columnInfo <- RODBC::sqlColumns(channel, dbTable)
 varTypes <- as.character(columnInfo$TYPE_NAME) 
 names(varTypes) <- as.character(columnInfo$COLUMN_NAME)  #varTypes
