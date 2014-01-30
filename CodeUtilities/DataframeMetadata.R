@@ -1,11 +1,11 @@
-ColumnRenameHeadstart <- function( df ) {
-  cat(paste0(", \"", colnames(df), "\"", "=", "\"", colnames(df), "\"", "\n")) #Gives a headstart to plyr::rename
+ColumnRenameHeadstart <- function( d ) {
+  cat(paste0(", \"", colnames(d), "\"", " = ", "\"", colnames(d), "\"", "\n")) #Gives a headstart to plyr::rename
 }
 # ColumnRenameHeadstart(ds)
 
-ColumnClassHeadstart <- function( df ) {
-  for( i in seq_along(colnames(df)) ) {
-    cat( ", \"", colnames(df)[i], "\" = \"", class(df[, i]), "\"\n", sep="")
+ColumnClassHeadstart <- function( d ) {
+  for( i in seq_along(colnames(d)) ) {
+    cat( ", \"", colnames(d)[i], "\" = \"", class(d[, i]), "\"\n", sep="")
   }
 }
 # ColumnClassHeadstart(ds)
