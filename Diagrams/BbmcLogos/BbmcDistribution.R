@@ -1,8 +1,10 @@
 require(ggplot2)
 require(grid)
 
-color1 <- "#B20D35" #Official OU RGB specification #http://en.wikipedia.org/wiki/Crimson
-color2 <- "gray50"
+# color1 <- "#B20D35" #Official OU RGB specification #http://en.wikipedia.org/wiki/Crimson
+color1 <- "#630D0D" #Recommended for monitors by https://www.ou.edu/content/home/webcomm/webguide/designconsiderations.html
+# color2 <- "gray50"
+color2 <- "#9A9798" #https://www.ou.edu/content/home/webcomm/webguide/designconsiderations.html
 lineSize <- 1
 interpolationPoints <- 1001
 
