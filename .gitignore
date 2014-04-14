@@ -43,6 +43,9 @@ us.stackdump
 #Sometimes data files are legitimate (and PHI-free).  In these cases, you can explicitly specify files to include, and upload to the central server.  Put an exclamation point in front of it.
 !RecruitmentProductivity/RecruitingZones/ZipcodesToZone.csv
 
+#Declares the packages required for the repository's code.
+!CodeUtilities/PackageDependencyList.csv
+
 #For LaTeX
 *.tex
 *.synctex.gz
