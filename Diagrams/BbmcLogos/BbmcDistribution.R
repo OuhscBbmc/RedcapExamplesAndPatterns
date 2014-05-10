@@ -1,8 +1,12 @@
 require(ggplot2)
 require(grid)
 
-# color1 <- "#B20D35" #Official OU RGB specification #http://en.wikipedia.org/wiki/Crimson
-color1 <- "#630D0D" #Recommended for monitors by https://www.ou.edu/content/home/webcomm/webguide/designconsiderations.html
+color1 <- "#841617" #Official OU RGB specification for paper by OU brand guide #https://www.ou.edu/content/brand/Print_Media/Oklahoma_Colors.html
+# color1 <- "#B20D35" #Official OU RGB specification for paper according to Wikipedia #http://en.wikipedia.org/wiki/Crimson
+# color1 <- "#AE003C" #Color used in pediatrics logo: http://www.ccs.miami.edu/ROH/ROH_images/OUHSC_logo.png
+# color1 <- "#990000" #The shade used in the Pediatrics logo supplied to us with the poster
+# color1 <- "#630D0D" #Recommended for monitors by https://www.ou.edu/content/home/webcomm/webguide/designconsiderations.html
+
 # color2 <- "gray50"
 color2 <- "#9A9798" #https://www.ou.edu/content/home/webcomm/webguide/designconsiderations.html
 lineSize <- 1
@@ -37,8 +41,8 @@ g <- ggplot(data.frame(x=seq(from=0, to=10, length=5)), aes(x)) +
   theme(axis.ticks=element_line(colour=color1)) + 
   theme(plot.margin = unit(c(0,0,0,0), "cm"))
 
-ggsave(filename="./Diagrams/BbmcLogos/BbmcDistributionsBackgroundClear.png", width=5.5, height=2.2, dpi=400, bg=NA)
-ggsave(filename="./Diagrams/BbmcLogos/BbmcDistributionsBackgroundWhite.png", width=5.5, height=2.2, dpi=400, bg="white")
+ggsave(plot=g, filename="./Diagrams/BbmcLogos/BbmcDistributionsBackgroundClear.png", width=5.5, height=2.2, dpi=1200, bg=NA)
+ggsave(plot=g, filename="./Diagrams/BbmcLogos/BbmcDistributionsBackgroundWhite.png", width=5.5, height=2.2, dpi=1200, bg="white")
 # ggsave(filename="./Publications/Logos/BbmcDistributionsBackgroundClear.svg", width=5.5, height=2.2, dpi=400, bg=NA)
 
 # ggsave(filename="./Diagrams/BbmcLogos/BbmcDistributionsBackgroundSquareClear.png", width=2.2, height=2.2, dpi=400, bg=NA)
