@@ -10,7 +10,7 @@ ColumnClassHeadstart <- function( d ) {
 }
 # ColumnClassHeadstart(ds)
 
-ColumnClassHeadstart <- function( x ) {
+ColumnValueHeadstart <- function( x ) {
   for( value in sort(unique(x)) ) {
     cat( ", \"", value, "\" = \"", value, "\"\n", sep="")
   }
