@@ -1,12 +1,8 @@
 require(ggplot2)
 require(grid)
 
-color1 <- "#841617" #Official OU RGB specification for paper by OU brand guide #https://www.ou.edu/content/brand/Print_Media/Oklahoma_Colors.html
-# color1 <- "#B20D35" #Official OU RGB specification for paper according to Wikipedia #http://en.wikipedia.org/wiki/Crimson
-# color1 <- "#AE003C" #Color used in pediatrics logo: http://www.ccs.miami.edu/ROH/ROH_images/OUHSC_logo.png
-# color1 <- "#990000" #The shade used in the Pediatrics logo supplied to us with the poster
-# color1 <- "#630D0D" #Recommended for monitors by https://www.ou.edu/content/home/webcomm/webguide/designconsiderations.html
-
+# color1 <- "#B20D35" #Official OU RGB specification #http://en.wikipedia.org/wiki/Crimson
+color1 <- "#630D0D" #Recommended for monitors by https://www.ou.edu/content/home/webcomm/webguide/designconsiderations.html
 # color2 <- "gray50"
 color2 <- "#9A9798" #https://www.ou.edu/content/home/webcomm/webguide/designconsiderations.html
 lineSize <- 1
