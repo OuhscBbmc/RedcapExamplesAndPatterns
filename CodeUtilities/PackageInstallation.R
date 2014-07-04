@@ -32,7 +32,7 @@ packagesToInstall <- c(
   , "rjags" #Interact with the Bayesian modeling software, JAGS
   , "RODBC" #For connecting to ODBC databases
   , "sp" #Spatial analysis
-  , "spdep" #Spatial dependence; builds on 'sp', "xtable" #Creates formatted tables. Especially nice for LaTeX
+  , "spdep" #Spatial dependence; builds on 'sp'
   , "stringr" #Consistent/convienent function signatures for manipulating text
   , "testit" #has the useful `assert()` function
   , "tm" #Text Mining
