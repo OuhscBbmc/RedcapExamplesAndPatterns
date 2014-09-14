@@ -1,12 +1,10 @@
 #rm(list=ls(all=TRUE))  #Clear the variables from previous runs.  UNcomment this only during testing, or else it will wipe out the calling code's memory.
-suppressStartupMessages <- TRUE
-require(RCurl, quietly=suppressStartupMessages)
-require(plyr, quietly=suppressStartupMessages)
-# require(reshape2, quietly=suppressStartupMessages)
-require(lubridate, quietly=suppressStartupMessages)
-require(stringr, quietly=suppressStartupMessages)
-require(RODBC, quietly=suppressStartupMessages)
-rm(suppressStartupMessages)
+library(RCurl, quietly=TRUE)
+library(plyr, quietly=TRUE)
+# library(reshape2, quietly=TRUE)
+library(lubridate, quietly=TRUE)
+library(stringr, quietly=TRUE)
+library(RODBC, quietly=TRUE)
 
 #############################
 ### Retrieve token and REDCap URL
