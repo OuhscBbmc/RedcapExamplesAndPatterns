@@ -5,9 +5,9 @@ The order matters.
 1. **[R](http://cran.r-project.org/)** is the centerpiece of the analysis. Every few months, you'll need to download the most recent version.  {added Sept 2012}
                                      
 1. **[RStudio Desktop](http://www.rstudio.com/ide/download/desktop)** is the IDE (integrated design interface) that you'll use to interact with R, GitHub, Markdown, and LaTeX. Updates can be checked easily through the menus `Help` -> `Check for updates`.   {added Sept 2012}
-1. **Several R Packages** will need to be installed. Running the R script [`PackageInstallation.R`](https://github.com/OuhscBbmc/RedcapExample/blob/master/CodeUtilities/PackageInstallation.R) (located in the `CodeUtilities` directory) downloads and installs only the packages that aren't already on your computer.  Create a new 'personal library' if it prompts you.  The script also updates existing packages if a newer version is available.  The list of packages will grow as we develop the reports.  Help keep the list updated. {added Sept 2012}
+1. **Several R Packages** will need to be installed. Running the R script [`PackageInstallation.R`](https://github.com/OuhscBbmc/RedcapExamplesAndPatterns/blob/master/CodeUtilities/PackageInstallation.R) (located in the `CodeUtilities` directory) downloads and installs only the packages that aren't already on your computer.  Create a new 'personal library' if it prompts you.  The script also updates existing packages if a newer version is available.  The list of packages will grow as we develop the reports.  Help keep the list updated. {added Sept 2012}
 1. **Several R Packages** might need to be updated.  Unless you've been told not to (because it would break something -this is rare), periodically update the packages by executing the following code `update.packages(ask="graphics", checkBuilt=TRUE)`. {added Sept 2012}
-1. **[GitHub](https://github.com/)** registration is necessary to push modified files to the repository.    First, register a free user account at https://github.com/plans.  Then tell the repository owner your exact username, and they'll add you as a collaborator to our GitHub repository (eg, https://github.com/OuhscBbmc/RedcapExample). {added Sept 2012}
+1. **[GitHub](https://github.com/)** registration is necessary to push modified files to the repository.    First, register a free user account at https://github.com/plans.  Then tell the repository owner your exact username, and they'll add you as a collaborator to our GitHub repository (eg, https://github.com/OuhscBbmc/RedcapExamplesAndPatterns). {added Sept 2012}
 1. **[GitHub for Windows Client](http://windows.github.com/)** does the basic tasks a little easier the git features built into RStudio.  {added Oct 2012}
                               
 ### Installation (optional)
@@ -15,7 +15,7 @@ The order does not matter.
 
 * **[msysGit](http://msysgit.github.com/)** allows RStudio to track changes and commit & sync them to the GitHub server. Connect RStudio to GitHub repository.  I moved this to optional (Oct 14, 2012) because the GitHub client (see above) does almost everything that the RStudio plugin does; and it does it a little better and a little more robust; and its installation hasn't given me problems.  {added Oct 2012}
   * Starting in the top right of RStudio, click: Project -> New Project -> Create Project from Version Control -> Git  {added Sept 2012}
-  * An example of a repository URL is https://github.com/OuhscBbmc/RedcapExample. Specify a location to save (a copy of) the project on your local computer.  {added Sept 2012}
+  * An example of a repository URL is https://github.com/OuhscBbmc/RedcapExamplesAndPatterns. Specify a location to save (a copy of) the project on your local computer.  {added Sept 2012}
 
 * **[Notepad++](http://notepad-plus-plus.org/)** lets you look at the raw CSV text when I'm troubleshooting issues (instead of looking at the file through Excel, which masks & causes some issues).  {added Sept 2012}
 * **[MiKTeX](http://miktex.org/)** is necessary only if you're using Sweave or knitr to produce *LaTeX* files (and not just *markdown* files).  It's a huge, slow installation that can take an hour or two.  {added Sept 2012}
@@ -26,7 +26,7 @@ The order does not matter.
 * **[pandoc](http://johnmacfarlane.net/pandoc/)** converts files from one markup format into another.  We'll possibly use this to create tables in MS Word (for article submissions). {added Sept 2012} 
 
 ### Location Examples
-* **GitHub repository** https://github.com/OuhscBbmc/RedcapExample {added Sept 2012}
+* **GitHub repository** https://github.com/OuhscBbmc/RedcapExamplesAndPatterns {added Sept 2012}
 * **File server directory** Ask your PI.  For Peds, it's typically on the "S" drive.
 * **SQL Server Database** Ask Thomas, Will or David
 * **REDCap database** Ask Thomas, Will or David.  It is a http url, and we're trying not to publicize its value.
