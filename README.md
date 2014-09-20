@@ -1,7 +1,8 @@
 Redcap Examples and Patterns
 ================
 
-A public repository sponsored by the Biomedical and Behavioral Methodology Core in the OUHSC Pediatrics Dept.  It has two purposes.  First, it contains examples and advice how to connect to the REDCap API, to import and export data.  Second, it demonstrates the software patterns that we believe help an empiricially-driven project:
+A public repository sponsored by the Biomedical and Behavioral Methodology Core ([BBMC](http://ouhsc.edu/bbmc/) in the OUHSC [Pediatrics Dept](http://www.oumedicine.com/pediatrics).  It has two purposes.  First, it contains examples and advice how to connect to the REDCap API, to import and export data.  Second, it demonstrates the software patterns that we believe help an empiricially-driven project:
+
  1. be developed in parallel across multiple developers and statisticians.
  1. meet or exceed the security standards mandated by campus IT and HIPAA laws.
  1. minimize time on redundant and brittle manipulation code, so there's more time to dedicate to analysis.
@@ -25,3 +26,6 @@ As David says, no matter how cool and efficient our reporting system is, it won'
 
 ### Project Health, History, & Guidelines
 The repository's website describes the progress from a few perspectives.  The [issue tracker](https://github.com/OuhscCcanMiechvEvaluation/Abcd/issues?state=open) manages the tasks assigned to different collaborators, and lists the associated milestones.  Differences & inconsistencies in programming style should be minimized by following a set of guidelines that we collectively agree upon in [ProjectGuidelines.md](https://github.com/OuhscBbmc/RedcapExamplesAndPatterns/blob/master/DocumentationGlobal/ProjectGuidelines.md).
+
+#### Are You Looking for Moved Files?
+The purpose of this repository has evolved a lot in the past year.  If you're looking for a file that's no longer in this repository, please look in the repository dedicated to the common [BBMC resources](https://github.com/OuhscBbmc/BbmcResources).
