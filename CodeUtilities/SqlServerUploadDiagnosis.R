@@ -2,7 +2,7 @@
 #  This seemed like the best place to put this code for now.  It probably deserves to be in some package.
 #  It should also be encapsulted in functions.
 
-require(RODBC)
+library(RODBC)
 
 ### Upload Visit Records to SQL Server
 #############################

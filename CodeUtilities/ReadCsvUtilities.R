@@ -1,9 +1,9 @@
 #http://r.789695.n4.nabble.com/some-helpful-tips-on-using-RODBC-td2324503.html
 rm(list=ls(all=TRUE))  #Clear the variables from previous runs.
-require(plyr, quietly=TRUE)
-require(RODBC, quietly=TRUE)
-require(lubridate, quietly=TRUE)
-require(stringr, quietly=TRUE)
+library(plyr, quietly=TRUE)
+library(RODBC, quietly=TRUE)
+library(lubridate, quietly=TRUE)
+library(stringr, quietly=TRUE)
 
 #############################
 ### Declare global functions and constants

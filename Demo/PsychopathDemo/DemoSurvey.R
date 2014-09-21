@@ -5,16 +5,14 @@ rm(list=ls(all=TRUE))  #Clear the variables from previous runs.
 ## @knitr LoadPackages
 ############################
 
-suppressStartupMessages <- TRUE
-require(knitr, quietly=suppressStartupMessages)
-require(ggplot2, quietly=suppressStartupMessages)
-require(Rcpp, quietly=suppressStartupMessages)
-require(RCurl, quietly=suppressStartupMessages)
-require(plyr, quietly=suppressStartupMessages)
-require(lubridate, quietly=suppressStartupMessages)
-require(stringr, quietly=suppressStartupMessages)
-require(RODBC, quietly=suppressStartupMessages)
-rm(suppressStartupMessages)
+library(knitr, quietly=TRUE)
+library(ggplot2, quietly=TRUE)
+library(Rcpp, quietly=TRUE)
+library(RCurl, quietly=TRUE)
+library(plyr, quietly=TRUE)
+library(lubridate, quietly=TRUE)
+library(stringr, quietly=TRUE)
+library(RODBC, quietly=TRUE)
 
 ## @knitr DeclareGlobalFunctions
 ############################

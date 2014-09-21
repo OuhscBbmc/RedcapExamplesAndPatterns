@@ -13,7 +13,7 @@ opts_knit$set(root.dir='../../')  #Don't combine this call with any other chunk 
 
 options(width=180)
 opts_chunk$set(comment="", warning=FALSE, echo=TRUE, tidy=FALSE, size="small")
-require(xtable)
+library(xtable)
 pathSourceCode <- "./Demo/PsychopathDemo/DemoSurvey.R"
 
 #This allows knitr to call chunks tagged in the underlying PrototypeCode.R file.

@@ -1,5 +1,5 @@
 rm(list=ls(all=TRUE))  #Clear the variables from previous runs.
-require(random, quietly=TRUE)
+library(random, quietly=TRUE)
 #Fixes Issue #144, in combination with HashUtility.R
 
 #It's recommended that the salt is at least as long as the hash: http://crackstation.net/hashing-security.htm#salt

@@ -1,4 +1,4 @@
-require(RODBC)
+library(RODBC)
 channel <- RODBC::odbcConnect("MiechvEvaluation") 
 RODBC::getSqlTypeInfo("Microsoft SQL Server") 
 RODBC::odbcGetInfo(channel)
