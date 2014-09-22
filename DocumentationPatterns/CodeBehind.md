@@ -1,4 +1,4 @@
-Code Behind
+Code Behind Pattern
 ================
 
 ## Summary
@@ -15,6 +15,12 @@ Code Behind
     * Since the file can execute by itself, it's easier to develop and debug.  The file can be run in it's entirety (Ctrl+Alt+R in RStudio), or several lines at a time (highlight the desired lines and Ctrl+Return in RStudio).
  * Altough a report can execute the code behind's chunks in any order, we recommend running them in the same order as they appear in the code behind, because:
     * It's easier understand and spot mistakes (such as inadvertantly skipping a section, or confusing the order of several sections). 
-    *  When you execute the code-behind file in its entirety (eg, Ctrl+Alt+R), it closely mimics how the report will execute, which makes development easier.
+    *  You can execute the code-behind file in its entirety (eg, Ctrl+Alt+R). This closely mimics how the report will execute, which makes development easier.
  
 ## Examples
+* [Cars](./Analyses/Cars/Cars.R)
+
+## See Also
+* [Exploratory Markdown Report Pattern](./DocumentationPatterns/MarkdownReportExploratory.md)
+* [Inferential Markdown Report Pattern](./DocumentationPatterns/MarkdownReportInferential.md)
+* [Polished LaTeX Report Pattern](./DocumentationPatterns/LatexReportPolished.md)
