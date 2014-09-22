@@ -46,6 +46,9 @@ us.stackdump
 #Declares the packages required for the repository's code.
 !CodeUtilities/PackageDependencyList.csv
 
+#Allow files in the DataPhiFree directory to be saved in the repository
+!DataPhiFree/Raw/MTCars.csv
+
 #For LaTeX
 *.tex
 *.synctex.gz
