@@ -1,11 +1,11 @@
-Redcap Examples and Patterns
+REDCap Examples and Patterns
 ================
 
-A public repository sponsored by the Biomedical and Behavioral Methodology Core ([BBMC](http://ouhsc.edu/bbmc/) in the OUHSC [Pediatrics Dept](http://www.oumedicine.com/pediatrics).  It has two purposes.  First, it contains examples and advice how to connect to the REDCap API, to import and export data.  Second, it demonstrates the software patterns that we believe help an empiricially-driven project:
+A public repository sponsored by the Biomedical and Behavioral Methodology Core ([BBMC](http://ouhsc.edu/bbmc/)) in the OUHSC [Pediatrics Dept](http://www.oumedicine.com/pediatrics).  It has two purposes.  First, it contains examples and advice how to connect to the REDCap API, to import and export data.  Second, it demonstrates the software patterns and practice that we believe help an empiricially-driven project:
 
  1. be developed in parallel across multiple developers and statisticians.
- 1. meet or exceed the security standards mandated by campus IT and HIPAA laws.
- 1. minimize time on redundant and brittle manipulation code, so there's more time to dedicate to analysis.
+ 1. exceed the security standards mandated by campus IT and HIPAA laws.
+ 1. minimize spent time on redundant and brittle manipulation code, so there's more time to dedicate to analysis.
  1. be generalizable to other projects, so time you spend learning this structure will help you be more efficient on your subsequent projects.
 
 ### Installation
