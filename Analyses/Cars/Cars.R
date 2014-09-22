@@ -9,6 +9,14 @@ require(RColorBrewer)
 # require(reshape2) #For converting wide to long
 require(ggplot2) #For graphing
 # require(mgcv, quietly=TRUE) #For the Generalized Additive Model that smooths the longitudinal graphs.
+
+#####################################
+## @knitr LoadSources
+#This example doesn't require loading/sourcing other analysis files.
+#  But it would go here if it did.
+# base::source(file="./Dal/Osdh/Gateways/C1ClientGW.R") #Load RetrieveC1Referral() into memory.
+# base::source(file="./Dal/Osdh/Gateways/C1CountyTime.R") #Load RetrieveC1CountyTime() into memory.
+
 #####################################
 ## @knitr DeclareGlobals
 options(show.signif.stars=F) #Turn off the annotations on p-values
@@ -127,7 +135,7 @@ HistogramDiscrete(dsObserved=ds, variableName="ForwardGearCountF")
 #####################################
 ## @knitr Scatterplots
 g1 <- ggplot(ds, aes(x=GrossHorsepower, y=QuarterMileInSeconds, color=ForwardGearCountF)) + 
-  geom_smooth(method="loess") +
+  geom_smooth(method="loess", span=1) +
   geom_point(shape=1) +
   theme_bw()
 g1

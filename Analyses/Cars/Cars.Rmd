@@ -13,6 +13,8 @@ This report covers the analyses used in the ZZZ project (Marcus Mark, PI).
 ```{r set_options, echo=F}
 # cat("Working directory: ", getwd())
 require(knitr)
+
+#To help knitr parse these arguments correctly, put comments at the end of call, not after each line. 
 opts_chunk$set(
   results='show', 
   comment = NA, 
@@ -28,6 +30,11 @@ echoChunks <- FALSE
 options(width=120) #So the output is 50% wider than the default.
 read_chunk("./Analyses/Cars/Cars.R") #This allows knitr to call chunks tagged in the underlying *.R file.
 ```
+
+<!-- Load any source files containing functions. --> 
+```{r LoadSources, echo=echoChunks, message=FALSE}
+```
+
 <!-- Load the packages.  Suppress the output when loading packages. --> 
 ```{r LoadPackages, echo=echoChunks, message=FALSE}
 ```

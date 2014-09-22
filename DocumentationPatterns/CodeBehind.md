@@ -7,7 +7,8 @@ Code Behind Pattern
  * The code behind file can be viewed as a companion to the report file(s).  We like to save the code behind file and the report file(s) in the same directory.
  * It's the last file in the workflow before a `knitr` report file (typically an Rnw or Rmd).
  * Each logical section of code is separated into a 'chunk' and labelled so that the knitr code can hook into the right spots.
- * A single code behind file can be called by multiple reports.  For instance, an Rmd (*ie, Markdown-based knitr file that can be rendered as HTML*) can hook into the code behind file for a quick & dirty internal report that's intended just for your research team, while an Rnw (*ie, a LaTeX-based knitr file that can be rendered as a PDF*) can hook into the same code behind file for a polished external report that's intended for a wider audience.
+ * A single code behind file can be called by multiple reports.  For instance, an **Rmd** (*ie, Markdown-based knitr file that can be rendered as HTML*) can hook into the code behind file for a quick & dirty internal report that's intended just for your research team, while an **Rnw** (*ie, a LaTeX-based knitr file that can be rendered as a PDF*) can hook into the same code behind file for a polished external report that's intended for a wider audience.
+ * It's not always possible, but try to have the code behind file as device agnostic as possible.  For graphs, this means that the code behind will specify a graph, but not actually draw it, or even declare its dimensions.  The graphic format (eg, png, svg, pdf) should be determined by the Rmd or Rnw file.
 
 ## Notes
  * The file should be able to run independently of the report file.  There are two advantages:
