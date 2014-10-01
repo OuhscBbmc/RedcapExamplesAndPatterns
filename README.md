@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/4971/OuhscBbmc/RedcapExamplesAndPatterns.png)](http://dx.doi.org/10.5281/zenodo.11923)
+
 REDCap Examples and Patterns
 ================
 
