@@ -73,8 +73,11 @@ img {
 <li><a href="#other-topics">Other Topics</a></li>
 </ul></li>
 <li><a href="#warehouse">Warehouse</a></li>
+<li><a href="#reading-writing-to-the-database">Reading &amp; Writing to the Database</a></li>
 <li><a href="#analysis">Analysis</a><ul>
+<li><a href="#hadleyverserstudio-suite">Hadleyverse/RStudio Suite</a></li>
 <li><a href="#automated-reports">Automated Reports</a></li>
+<li><a href="#publication-bound-modeling">Publication-bound Modeling</a></li>
 </ul></li>
 <li><a href="#combining-info-from-different-protocols">Combining Info from Different Protocols</a></li>
 </ul>
@@ -137,10 +140,42 @@ img {
 <li>Will you be able to find developers and statisticians to build &amp; maintain the tools &amp; frameworks used.</li>
 </ul>
 </div>
+<div id="reading-writing-to-the-database" class="section level1">
+<h1>Reading &amp; Writing to the Database</h1>
+<ul>
+<li><p>Sometimes called the DAL (data access layer) in enterprise architecture.</p></li>
+<li>All interaction should be programatic, not manual.
+<ul>
+<li>saves times over the long-run</li>
+<li>documents the process for you and others</li>
+</ul></li>
+<li><p>Separate the code into layers/tiers to improve cognitive load and division of labor. Don’t require an expensive PhD statistician to be involved in the database administration. Don’t require an even more expensive DBA to be involved in the analysis code. At minimum create a layer for</p>
+<ol style="list-style-type: decimal">
+<li>cleaning &amp; validating the external data,</li>
+<li>importing into to your data warehouse (part of the DAL),</li>
+<li>exporting from your data warehouse (part of the DAL),</li>
+<li>manipulating/combining/aggregating the data,</li>
+<li>exploring the manipulated data (eg, basic graphs and descriptives),</li>
+<li>analyzing/modeling the manipulated data (eg, CDA)</li>
+</ol>
+<p>The last two layers can be combined with the reporting code if they’re executed quickly. If it’s a long-running Bayesian or SEM analysis, consider splitting the analyzing layer in two. One calculates the expensive model and caches the results (in a serialized R object). The first reads the pre-computed results and incorporates it into a report.</p></li>
+<li>Common Avenues
+<ul>
+<li>RODBC/JDBC for small &amp; medium size datasets</li>
+<li>Bulk CSV for large datasets.
+<ul>
+<li>You’ll likely need to clean the incoming data, then save again as CSV)</li>
+<li>This enables parallel cleaning (by different workstations/VMs) and parallel loading/unloading (on different warehouse nodes.)</li>
+</ul></li>
+<li>API for specialized databases and application servers (eg, REDCap)</li>
+</ul>
+<p>The same warehouse can offer different avenues, such as bulk CSV uploads (when the incoming data is 10GB+) and RODBC exports (when the aggregated dataset is ~2MB).</p></li>
+</ul>
+</div>
 <div id="analysis" class="section level1">
 <h1>Analysis</h1>
-<div id="automated-reports" class="section level3">
-<h3>Automated Reports</h3>
+<div id="hadleyverserstudio-suite" class="section level3">
+<h3>Hadleyverse/RStudio Suite</h3>
 <p>The Hadleyverse/RStudio set of tools is always my front runner because that team has a knack for developing tools that</p>
 <ul>
 <li>meet your needs, without being ornate or unnecessarily complicated,</li>
@@ -158,8 +193,17 @@ img {
 <li>knitr and most R packages</li>
 <li>rmarkdown and Jekyll sites</li>
 </ul></li>
+<li>support reproducible research
+<ul>
+<li>the text-based files play nicely with GitHub and other version control systems (as opposed to binary files),</li>
+<li>their packages are very general, and equally applicable across the biology-psychology spectrum, and</li>
+<li>they encourage encapsulation of your functions into R packages</li>
+</ul></li>
 <li>obtain a strong following and great support on Stack Overflow and Google Groups.</li>
 </ul>
+</div>
+<div id="automated-reports" class="section level3">
+<h3>Automated Reports</h3>
 <p>Reporting Approaches</p>
 <ul>
 <li>“Dynamic” knitr reports
@@ -171,6 +215,13 @@ img {
 <li>Mail Merge in MS Word or LibreOffice.</li>
 </ol></li>
 <li>For wide-spread or frequently refreshed reports, deploying through email or a internal fileserver isn’t feasible. You’ll likely want a dedicated web site. Consider how automated that website needs to be.</li>
+<li>Separate the “model code” from the “presentation code” (to borrow a concept from enterprise architecture). Allows you to have different looking reports using the same analysis code (eg, one for stakeholders, and one for nurses).</li>
+<li>Likely paths:
+<ul>
+<li>LaTeX to PDF (for public/pretty reports on paper for external audiences)</li>
+<li>markdown to html (for quick reports on a computer monitor for internal audiences)</li>
+<li>markdown to PDF (for something in between?)</li>
+</ul></li>
 </ul></li>
 <li>“Interactive” Shiny reports
 <ul>
@@ -182,6 +233,16 @@ img {
 </ul></li>
 </ul>
 </div>
+<div id="publication-bound-modeling" class="section level3">
+<h3>Publication-bound Modeling</h3>
+<p>Compared to automated reports:</p>
+<ul>
+<li>Efficiency and repetition is much less important,</li>
+<li>Self-documentation &amp; reproducibility are still important, a</li>
+<li><p>Allowing ad-hoc directions is much more important. (Eg chasing anomolies and rabbit holes. Validating suspicious patterns that weren’t suspicious with an earlier dataset),</p></li>
+<li><p>External readers won’t see the report itself. But the report stillupdates all the tables &amp; graphs that will be pasted into the manuscript.</p></li>
+</ul>
+</div>
 </div>
 <div id="combining-info-from-different-protocols" class="section level1">
 <h1>Combining Info from Different Protocols</h1>
@@ -190,18 +251,18 @@ img {
 <ol style="list-style-type: decimal">
 <li>Labs running the blood tests</li>
 <li>Durations before delivery</li>
-<li>Demographics of the surrounding area</li>
+<li>Demographics cultures in the surrounding area</li>
 <li>Screening protocols –one location have most people the screen &amp; thorough/accurate test, while the other didn’t burden the moms who passed the quick screen.</li>
 </ol>
 <p>What hope does a psychological variable have without a good code book? There’s not a single behavioral variable simpler than glucose level or body fat proportion.</p></li>
-<li>Require a minimum level of documentation for <em>each</em> item including
+<li><p>Require a minimum level of documentation for <em>each</em> item. My blind suggestions are:</p>
 <ol style="list-style-type: decimal">
 <li>Exact item wording (both the stem and available options)</li>
 <li>Changes to the item over the life of the protocol. This is particularly relevant for your longitudinal studies.</li>
 <li>Description of the overall sample.</li>
 <li>Description of which subjects in the sample received the item. If it involves branching logic, be very specific. CAT people, you’re on your own.</li>
 </ol>
-<p>Use footnotes or lookup tables if the info is heavily repetitive across items.</p></li>
+<p>Use footnotes or lookup tables if the info is heavily repetitive across items. But still have a footnote marker beside each item.</p></li>
 <li><p>Confederate</p></li>
 <li><p>When different organizations are involved, the human challenges are almost always harder to solve that computer challenges. Strive for a flexible system that can accommodate changing human challenges, instead of trying to get the humans to accommodate your software. (This point isn’t very profound in a room full of behavioral scientists.)</p></li>
 </ul>
