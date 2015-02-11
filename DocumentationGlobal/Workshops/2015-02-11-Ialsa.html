@@ -67,6 +67,7 @@ img {
 
 <div id="TOC">
 <ul>
+<li><a href="#overall-goals">Overall Goals</a></li>
 <li><a href="#redcap">REDCap</a><ul>
 <li><a href="#inside-sweet-spot">Inside Sweet spot</a></li>
 <li><a href="#outside-sweet-spot">Outside Sweet spot</a></li>
@@ -83,6 +84,10 @@ img {
 </ul>
 </div>
 
+<div id="overall-goals" class="section level1">
+<h1>Overall Goals</h1>
+<p>This list is a menu of potential issues we might discuss together. It’s not a blue print. There are a lot of bullets that have suggestions that may not be best for IALSA scenarios, but they probably discussed and addressed</p>
+</div>
 <div id="redcap" class="section level1">
 <h1>REDCap</h1>
 <div id="inside-sweet-spot" class="section level3">
@@ -124,20 +129,32 @@ img {
 </div>
 <div id="warehouse" class="section level1">
 <h1>Warehouse</h1>
-<p>Architecutre</p>
+<p>Architecture</p>
 <ul>
 <li>Conventional Relational models vs newer structures.</li>
-<li>OLTP when humans enter data</li>
-<li>OLAP when statisticians pull data</li>
-<li>Multiple OLTP can feed one OLAP (see Prairie Outpost architecture as an example)</li>
+<li>OLAP instead of OLTP
+<ul>
+<li>OLTP when humans enter data <em>vs</em> OLAP when statisticians pull data.</li>
+<li>OLTP for frequent transactions of a few records <em>vs</em> OLAP for infrequent transactions of large batches.</li>
+<li>OLTP when a single lost record is hard/impossible to recover <em>vs</em> OLAP when you simply rerun the batch.</li>
+<li>OLTP to improve latency <em>vs</em> OLAP to improve overall throughput.</li>
+</ul></li>
+<li>Multiple OLTPs can feed one OLAP (see Prairie Outpost architecture as an example)</li>
 <li>Incremental development, with an eye on the horizon.</li>
 </ul>
 <p>Strategies</p>
 <ul>
+<li>Create different ‘schemas’ to represent the life-stage. I typically use something like <code>import_raw</code>, <code>import_derived</code>, <code>aggregated</code>, <code>analysis</code>, <code>counts</code>. The tables typically get smaller. When change is made, it’s clearer what upstream tables don’t have to be rerun.
+<ul>
+<li><code>import_raw</code> is as close to the collaborator’s extract as possible. Where possible I’ll hash PHI IDs (eg, SSN) and obfuscate PHI values (eg, month of birth).</li>
+<li><code>import_derived</code> has (a) clean &amp; standardized variables, (b) fewer unnecessary columns, (c) fewer bad rows, and (d) some calculated variables (eg, age at appointment).</li>
+<li>The other typically build off <code>import_derived</code>, or each other.</li>
+</ul></li>
 <li>Location: on campus vs in cloud</li>
 <li>Develop components to be as independent as possible. Ideally a change doesn’t require changes of everything downstream.</li>
+<li>Distribution &amp; replication across nodes.</li>
 <li>Archive/backup strategies that (a) minimize data loss and (b) maximize reproducibility.</li>
-<li>Will you be able to find developers and statisticians to build &amp; maintain the tools &amp; frameworks used.</li>
+<li>Ability to find developers and statisticians to build &amp; maintain the tools &amp; frameworks used. Eg, favor a column-major database over Hadoop.</li>
 </ul>
 </div>
 <div id="reading-writing-to-the-database" class="section level1">
