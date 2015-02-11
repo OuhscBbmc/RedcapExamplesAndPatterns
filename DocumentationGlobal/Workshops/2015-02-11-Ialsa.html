@@ -72,7 +72,10 @@ img {
 <li><a href="#outside-sweet-spot">Outside Sweet spot</a></li>
 <li><a href="#other-topics">Other Topics</a></li>
 </ul></li>
-<li><a href="#warehouse-approaches">Warehouse Approaches</a></li>
+<li><a href="#warehouse">Warehouse</a></li>
+<li><a href="#analysis">Analysis</a><ul>
+<li><a href="#automated-reports">Automated Reports</a></li>
+</ul></li>
 <li><a href="#combining-info-from-different-protocols">Combining Info from Different Protocols</a></li>
 </ul>
 </div>
@@ -109,16 +112,98 @@ img {
 <h3>Other Topics</h3>
 <ul>
 <li>Conventional forms vs “Surveys”</li>
+<li>Options for connecting REDCap to other databases &amp; workstations (manual, API, DET, DDP).
+<ul>
+<li>API makes the most sense for statisticians; our REDCapR package.</li>
+</ul></li>
 </ul>
 </div>
 </div>
-<div id="warehouse-approaches" class="section level1">
-<h1>Warehouse Approaches</h1>
+<div id="warehouse" class="section level1">
+<h1>Warehouse</h1>
+<p>Architecutre</p>
+<ul>
+<li>Conventional Relational models vs newer structures.</li>
+<li>OLTP when humans enter data</li>
+<li>OLAP when statisticians pull data</li>
+<li>Multiple OLTP can feed one OLAP (see Prairie Outpost architecture as an example)</li>
+<li>Incremental development, with an eye on the horizon.</li>
+</ul>
+<p>Strategies</p>
+<ul>
+<li>Location: on campus vs in cloud</li>
+<li>Develop components to be as independent as possible. Ideally a change doesn’t require changes of everything downstream.</li>
+<li>Archive/backup strategies that (a) minimize data loss and (b) maximize reproducibility.</li>
+<li>Will you be able to find developers and statisticians to build &amp; maintain the tools &amp; frameworks used.</li>
+</ul>
+</div>
+<div id="analysis" class="section level1">
+<h1>Analysis</h1>
+<div id="automated-reports" class="section level3">
+<h3>Automated Reports</h3>
+<p>The Hadleyverse/RStudio set of tools is always my front runner because that team has a knack for developing tools that</p>
+<ul>
+<li>meet your needs, without being ornate or unnecessarily complicated,</li>
+<li>fit well with each other. You can mix &amp; match almost any combination of
+<ul>
+<li>knitr</li>
+<li>Shiny</li>
+<li>dplyr, plyr, reshape2, &amp; tidyr</li>
+<li>ggplot and ggvis</li>
+</ul></li>
+<li>fit well with outside technology, for example
+<ul>
+<li>Shiny and leaflet maps</li>
+<li>Shiny and contemporary HTML5 &amp; JavaScript approaches (eg, Bootstrap &amp; d3)</li>
+<li>knitr and most R packages</li>
+<li>rmarkdown and Jekyll sites</li>
+</ul></li>
+<li>obtain a strong following and great support on Stack Overflow and Google Groups.</li>
+</ul>
+<p>Reporting Approaches</p>
+<ul>
+<li>“Dynamic” knitr reports
+<ul>
+<li>Also consider
+<ol style="list-style-type: decimal">
+<li>simple reports in REDCap,</li>
+<li>database reporting frameworks with drill-down capabilities (eg, SQL Server Reporting Services), and even</li>
+<li>Mail Merge in MS Word or LibreOffice.</li>
+</ol></li>
+<li>For wide-spread or frequently refreshed reports, deploying through email or a internal fileserver isn’t feasible. You’ll likely want a dedicated web site. Consider how automated that website needs to be.</li>
+</ul></li>
+<li>“Interactive” Shiny reports
+<ul>
+<li>Also consider
+<ol style="list-style-type: decimal">
+<li>Conventional HTML/PHP/Python/.NET sites using d3 and other JavaScript libraries</li>
+<li>all-flash-and-no-substance tools like Tableau (but not for too long)</li>
+</ol></li>
+</ul></li>
+</ul>
+</div>
 </div>
 <div id="combining-info-from-different-protocols" class="section level1">
 <h1>Combining Info from Different Protocols</h1>
 <ul>
-<li>No such thing as a ‘context-free’ variable</li>
+<li>No such thing as a ‘context-free’ variable. Even a simple measurement like “birth weight” or “glucose level”&quot; can differ across two <em>well-designed</em> studies. They two hospitals had different (but equally justifiable):
+<ol style="list-style-type: decimal">
+<li>Labs running the blood tests</li>
+<li>Durations before delivery</li>
+<li>Demographics of the surrounding area</li>
+<li>Screening protocols –one location have most people the screen &amp; thorough/accurate test, while the other didn’t burden the moms who passed the quick screen.</li>
+</ol>
+<p>What hope does a psychological variable have without a good code book? There’s not a single behavioral variable simpler than glucose level or body fat proportion.</p></li>
+<li>Require a minimum level of documentation for <em>each</em> item including
+<ol style="list-style-type: decimal">
+<li>Exact item wording (both the stem and available options)</li>
+<li>Changes to the item over the life of the protocol. This is particularly relevant for your longitudinal studies.</li>
+<li>Description of the overall sample.</li>
+<li>Description of which subjects in the sample received the item. If it involves branching logic, be very specific. CAT people, you’re on your own.</li>
+</ol>
+<p>Use footnotes or lookup tables if the info is heavily repetitive across items.</p></li>
+<li><p>Confederate</p></li>
+<li><p>When different organizations are involved, the human challenges are almost always harder to solve that computer challenges. Strive for a flexible system that can accommodate changing human challenges, instead of trying to get the humans to accommodate your software. (This point isn’t very profound in a room full of behavioral scientists.)</p></li>
 </ul>
 </div>
 
