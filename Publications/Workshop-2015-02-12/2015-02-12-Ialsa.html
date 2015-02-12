@@ -68,18 +68,10 @@ img {
 <div id="TOC">
 <ul>
 <li><a href="#overall-goals">Overall Goals</a></li>
-<li><a href="#redcap">REDCap</a><ul>
-<li><a href="#inside-sweet-spot">Inside Sweet spot</a></li>
-<li><a href="#outside-sweet-spot">Outside Sweet spot</a></li>
-<li><a href="#other-topics">Other Topics</a></li>
-</ul></li>
+<li><a href="#redcap">REDCap</a></li>
 <li><a href="#warehouse">Warehouse</a></li>
 <li><a href="#reading-writing-to-the-database">Reading &amp; Writing to the Database</a></li>
-<li><a href="#analysis">Analysis</a><ul>
-<li><a href="#hadleyverserstudio-suite">Hadleyverse/RStudio Suite</a></li>
-<li><a href="#automated-reports">Automated Reports</a></li>
-<li><a href="#publication-bound-modeling">Publication-bound Modeling</a></li>
-</ul></li>
+<li><a href="#analysis">Analysis</a></li>
 <li><a href="#combining-info-from-different-protocols">Combining Info from Different Protocols</a></li>
 </ul>
 </div>
@@ -272,7 +264,7 @@ img {
 <li>Screening protocols –one location have most people the screen &amp; thorough/accurate test, while the other didn’t burden the moms who passed the quick screen.</li>
 </ol>
 <p>What hope does a psychological variable have without a good code book? There’s not a single behavioral variable simpler than glucose level or body fat proportion.</p></li>
-<li><p>Require a minimum level of documentation for <em>each</em> item. My blind suggestions are:</p>
+<li><p>Require a minimum level of documentation for <em>each</em> item of each study/protocol. My blind suggestions are:</p>
 <ol style="list-style-type: decimal">
 <li>Exact item wording (both the stem and available options)</li>
 <li>Changes to the item over the life of the protocol. This is particularly relevant for your longitudinal studies.</li>
@@ -280,7 +272,12 @@ img {
 <li>Description of which subjects in the sample received the item. If it involves branching logic, be very specific. CAT people, you’re on your own.</li>
 </ol>
 <p>Use footnotes or lookup tables if the info is heavily repetitive across items. But still have a footnote marker beside each item.</p></li>
-<li><p>Confederate</p></li>
+<li>Confederation of protocols <em>vs</em> forcing them into a single grand dataset. I like the loose confederation (or at least starting out that way).
+<ul>
+<li>If there are 14 different aging investigations, I’m guessing there’s 10% overlap when all protocols are combined.</li>
+<li>But rarely does it make sense to combine all 14 . There’s probably a five clusters of ~4 studies (that have 70% overlap), where some studies can naturally contribute to multiple clusters.</li>
+<li>At least initially, leave it up to the research team which studies they want combined. Don’t force everything into a single format. Maybe squeeze it into the five formats (one for each cluster). Or maybe only offer the studies separately.</li>
+</ul></li>
 <li><p>When different organizations are involved, the human challenges are almost always harder to solve that computer challenges. Strive for a flexible system that can accommodate changing human challenges, instead of trying to get the humans to accommodate your software. (This point isn’t very profound in a room full of behavioral scientists.)</p></li>
 </ul>
 </div>
