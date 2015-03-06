@@ -47,8 +47,8 @@ us.stackdump
 !CodeUtilities/PackageDependencyList.csv
 
 #Allow files in the DataPhiFree directory to be saved in the repository
-!DataPhiFree/Raw/MTCars.csv
-!DataPhiFree/Derived/MotorTrendCarTest.rds
+!data_phi_free/raw/mt_cars.csv
+!data_phi_free/derived/motor_trend_car_test.rds
 
 #For LaTeX
 *.tex

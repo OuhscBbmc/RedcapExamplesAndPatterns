@@ -1,4 +1,4 @@
-`./DataPhiFree/Derived/` Directory
+`./data_phi_free/derived/` Directory
 =========
 
 This directory should contain only data files that can be derived from the raw data files (ie, those in `./DataPhiFree/Raw/`) **using code contained in this repository**.  Unlike the raw data files, proprietary & binary formats are acceptable, since the repository's code should be able to reproduce them.
