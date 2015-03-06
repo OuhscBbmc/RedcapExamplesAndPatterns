@@ -11,7 +11,7 @@ A public repository sponsored by the Biomedical and Behavioral Methodology Core 
  1. be generalizable to other projects, so time you spend learning this structure will help you be more efficient on your subsequent projects.
 
 ### Pattern Documentation
-We've started a collection of documents that describe the essential features of the patterns we like. We'll add a TOC shortly; for now click on any file in the [Documentation Patterns](./DocumentationPatterns/) directory.  From these documents, you'll be able to follow hyperlinks to examples of each pattern.
+We've started a collection of documents that describe the essential features of the patterns we like. Click on any file in the [Documentation Patterns](./documentation_patterns/) directory.  From these documents, you'll be able to follow hyperlinks to examples of each pattern.
 
 ### Installation
 Instructions for installing the pieces required for generating and running our reports. 
