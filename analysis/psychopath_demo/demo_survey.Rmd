@@ -28,7 +28,7 @@ opts_chunk$set(
 echoChunks <- FALSE
 options(width=120) #So the output is 50% wider than the default.
 
-read_chunk("./analyses/psychopath_demo/demo_survey.R")  #This allows knitr to call chunks tagged in the underlying *.R file.
+read_chunk("./analysis/psychopath_demo/demo_survey.R")  #This allows knitr to call chunks tagged in the underlying *.R file.
 ```
 
 <!-- Load any source files containing functions. --> 

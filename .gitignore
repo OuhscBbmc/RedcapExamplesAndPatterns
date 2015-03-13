@@ -44,7 +44,7 @@ us.stackdump
 !RecruitmentProductivity/RecruitingZones/ZipcodesToZone.csv
 
 #Declares the packages required for the repository's code.
-!CodeUtilities/PackageDependencyList.csv
+!code_utilities/package_dependency_list.csv
 
 #Allow files in the DataPhiFree directory to be saved in the repository
 !data_phi_free/raw/mt_cars.csv
