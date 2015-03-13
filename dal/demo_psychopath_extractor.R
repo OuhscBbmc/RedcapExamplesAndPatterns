@@ -37,12 +37,12 @@ ReplaceNAsWithFactorLevel <- function( scores, newNALabel="Unknown", addUnknownL
 #############################
 #Call REDCap
 rawCsvText <- RCurl::postForm(
-  uri=redcapUri, 
-  token=token,
-  content='record',
-  format='csv', 
-  type='flat', 
-  .opts=curlOptions(cainfo="./Dal/Certs/ca-bundle.crt")
+  uri = redcapUri, 
+  token = token,
+  content = 'record',
+  format = 'csv', 
+  type = 'flat', 
+  .opts = curlOptions(cainfo = "./Dal/Certs/ca-bundle.crt")
 )
 # head(rawCsvText) #Inspect the raw data, if desired.
 demods <- read.csv(text=rawCsvText, stringsAsFactors=FALSE) #Convert the raw text to a dataset.
@@ -54,19 +54,19 @@ rm(redcapUri, token, rawCsvText)
 #############################
 ### Items about Interview
 #############################
-demods <- plyr::rename(demods, replace=c(
-  "participant_id"="ParticipantID"
-  ,"redcap_survey_timestamp"="TimeStamp"
-  ,"gender"="Gender"
-  ,"redcap_survey_identifier"="SurveyIdentifier"
-  ,"date"="Date"
-  ,"psycho5"="CunningManipulative"
-  ,"psycho6"="LackOfRemorse"
-  ,"psycho9"="ParasiticLifestyle"
-  ,"psycho13"="LackOfRealisticGoals"
-  ,"psycho20"="CriminalVersatility"
-  ,"score"="PsychopathicScore"
-  ,"comments"="Questions"
+demods <- plyr::rename(demods, replace = c(
+  "participant_id" = "ParticipantID"
+  ,"redcap_survey_timestamp" = "TimeStamp"
+  ,"gender" = "Gender"
+  ,"redcap_survey_identifier" = "SurveyIdentifier"
+  ,"date" = "Date"
+  ,"psycho5" = "CunningManipulative"
+  ,"psycho6" = "LackOfRemorse"
+  ,"psycho9" = "ParasiticLifestyle"
+  ,"psycho13" = "LackOfRealisticGoals"
+  ,"psycho20" = "CriminalVersatility"
+  ,"score" = "PsychopathicScore"
+  ,"comments" = "Questions"
   
   
 ))
@@ -94,13 +94,13 @@ demods$LackOfRealisticGoals <- ReplaceNAsWithFactorLevel(demods$LackOfRealisticG
 
 
 demods <- plyr::rename(demods, replace=c(
-  psycho18___1="Never", 
-  psycho18___2="LunchDetention", 
-  psycho18___3="InSchoolSuspension", 
-  psycho18___4="OutOfSchoolSuspension",
-  psycho18___5="TrafficViolations",
-  psycho18___6="MultipleLawEnforcementEncounters",
-  psycho18___7="OnProbation"
+  psycho18___1 = "Never", 
+  psycho18___2 = "LunchDetention", 
+  psycho18___3 = "InSchoolSuspension", 
+  psycho18___4 = "OutOfSchoolSuspension",
+  psycho18___5 = "TrafficViolations",
+  psycho18___6 = "MultipleLawEnforcementEncounters",
+  psycho18___7 = "OnProbation"
 ))
 
 
