@@ -24,7 +24,7 @@ rm(path_csv)
 #####################################
 ## @knitr tweak_data
 ds_install_from_cran <- ds_packages[ds_packages$install & ds_packages$on_cran, ]
-ds_install_from_github <- ds_packages[ds_packages$install & !is.na(ds_packages$github_username) & nchar(ds_packages$github_username)>0, ]
+ds_install_from_github <- ds_packages[ds_packages$install & !is.ds_packages$on_cran, ]
 
 rm(ds_packages)
 
