@@ -22,7 +22,7 @@ rm(channel, dsnName)
 #############################
 ### Read the CSV and rename some columns
 #############################
-ds <- read.csv(uriExtract, stringsAsFactors=FALSE, na.strings="", nrows=-100) 
+ds <- read.csv(uriExtract, stringsAsFactors=FALSE, na.strings="", nrows=-100)
 classesAutomatic <- sapply(ds, class)
 
 definition <- ""
@@ -42,7 +42,7 @@ classes <- c(
 # paste0("Visit", 1:93, =)
 
 system.time(
-  ds <- read.csv(uriExtract, stringsAsFactors=FALSE, na.strings="", nrows=-100, colClasses=classes, comment.char="") 
+  ds <- read.csv(uriExtract, stringsAsFactors=FALSE, na.strings="", nrows=-100, colClasses=classes, comment.char="")
 )
 
 summary(ds)
