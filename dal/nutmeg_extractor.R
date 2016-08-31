@@ -1,22 +1,23 @@
 #rm(list=ls(all=TRUE))  #Clear the variables from previous runs.  UNcomment this only during testing, or else it will wipe out the calling code's memory.
-# library(plyr, quietly=TRUE)
-# library(dplyr, quietly=TRUE)
-# library(reshape2, quietly=TRUE)
-# library(lubridate, quietly=TRUE)
-library(REDCapR, quietly=TRUE) #Interacts with REDCap's API
-library(testit, quietly=TRUE) #Interacts with REDCap's API
 
-#############################
-### Retrieve token and REDCap URL
-#############################
 
-#With projects containing PHI, the token is loaded from a second database with `REDCapR::retrieve_token_mssql()`
+# ---- load-sources ------------------------------------------------------------
+
+
+# ---- load-packages -----------------------------------------------------------
+library("magrittr")
+requireNamespace("dplyr")   # Avoid attaching dplyr, b/c its function names conflict with a lot of packages (esp base, stats, and plyr).
+requireNamespace("REDCapR") # Interacts with REDCap's API. Update with devtools::install_github(repo="OuhscBbmc/REDCapR")
+requireNamespace("testit")  # Convienent assert function
+
+
+# ---- declare-globals ---------------------------------------------------------
+
+# With projects containing PHI, the token is loaded from a second database with `REDCapR::retrieve_credential_mssql()`
 token <- "9A81268476645C4E5F03428B8AC3AA7B"
-uri <- "https://bbmc.ouhsc.edu/redcap/api/"
+uri   <- "https://bbmc.ouhsc.edu/redcap/api/"
 
-#############################
-### Global Functions
-#############################
+labels_race <-c("AmericanOrAlaskanNative", "Asian", "Native Hawaiian or other Pacific Islander", "Black", "White", "More than one race", "Unknown or Not reported")
 
 ReplaceNAsWithFactorLevel <- function( scores, newNALabel="Unknown", addUnknownLevel=FALSE) {
   if( addUnknownLevel ) {
@@ -28,9 +29,7 @@ ReplaceNAsWithFactorLevel <- function( scores, newNALabel="Unknown", addUnknownL
   return( scores )
 }
 
-#############################
-### Query REDCap API
-#############################
+# ---- load-data ---------------------------------------------------------------
 
 #Call REDCap and verify the read was a success.  Stop if it failed.
 result_1 <- REDCapR::redcap_read(redcap_uri=uri, token=token)
@@ -43,33 +42,24 @@ ds <- result_1$data
 object.size(ds)
 sapply(ds, class)
 
-#############################
-### Rename variables if necessary
-#############################
+# ---- tweak-data --------------------------------------------------------------
+ds <- ds %>% 
+  dplyr::rename_(
+    "comments_participant"    = "comments",
+    "weight_in_kg"            = "weight",
+    "height_in_cm"            = "height"
+  ) %>% 
+  dplyr::mutate(
+    
+    # Convert the character to an official date
+    dob          =  as.Date(dob,  "%Y-%m-%d"),
 
-ds <- plyr::rename(ds, replace=c(
-  "comments" = "comments_participant",
-  "weight" = "weight_in_kg",
-  "height" = "height_in_cm"  
-))
+    # Convert to factor variables
+    ethnicity    = factor(ds$ethnicity, levels=0:2, labels=c("Hispanic or Latino", "NOT Hispanic or Latino", "Unknown / Not Reported")),
+    ethnicity    = ReplaceNAsWithFactorLevel(ds$ethnicity, addUnknownLevel=TRUE),
 
-#############################
-### Convert variable types
-#############################
-
-#Convert the character to an official date
-ds$dob <- as.Date(ds$dob,  "%Y-%m-%d")
-
-#############################
-### Convert to factor variables
-#############################
-
-ds$ethnicity <- factor(ds$ethnicity, levels=0:2, labels=c("Hispanic or Latino", "NOT Hispanic or Latino", "Unknown / Not Reported"))
-ds$ethnicity <- ReplaceNAsWithFactorLevel(ds$ethnicity, addUnknownLevel=TRUE)
-
-labels_race <-c("AmericanOrAlaskanNative", "Asian", "Native Hawaiian or other Pacific Islander", "Black", "White", "More than one race", "Unknown or Not reported")
-ds$race_and_ethnicity_complete <- factor(ds$race_and_ethnicity_complete, levels=1:7, labels=labels_race)
-# ds$race <- ReplaceNAsWithFactorLevel(ds$race, addUnknownLevel=FALSE)
+    race_and_ethnicity_complete = factor(race_and_ethnicity_complete, levels=seq_along(labels_race), labels=labels_race)
+)
 
 #############################
 ### Convert multi-valued variables
