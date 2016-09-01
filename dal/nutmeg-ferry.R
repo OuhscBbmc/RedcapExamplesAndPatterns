@@ -19,16 +19,6 @@ retrieve_mice <- function( ) {
   
   labels_race <-c("AmericanOrAlaskanNative", "Asian", "Native Hawaiian or other Pacific Islander", "Black", "White", "More than one race", "Unknown or Not reported")
   
-  ReplaceNAsWithFactorLevel <- function( scores, newNALabel="Unknown", addUnknownLevel=FALSE) {
-    if( addUnknownLevel ) {
-      levels(scores) <- c(levels(scores), newNALabel)  #Add a new level called 'Unknown', unless the default parameter has been changed.
-    }
-    
-    scores[is.na(scores)] <- newNALabel #Typically "Unknown"
-    if(any(is.na(scores))) stop("The reassigned factor variable should not have any NA values.")
-    return( scores )
-  }
-  
   # ---- load-data ---------------------------------------------------------------
   
   #Call REDCap and verify the read was a success.  Stop if it failed.
@@ -40,30 +30,69 @@ retrieve_mice <- function( ) {
   
   #Query a few properties of the dataset, such as its overall size and variable types.
   object.size(d)
-  sapply(d, class)
   
   # ---- tweak-data --------------------------------------------------------------
+  # OuhscMunge::column_rename_headstart(d)
   d <- d %>% 
-    dplyr::rename_(
-      "comments_participant"    = "comments",
-      "weight_in_kg"            = "weight",
-      "height_in_cm"            = "height"
+    dplyr::select_( #Select implicitly drops variables that aren't list below.
+      "record_id"                                = "`record_id`"
+      # , "name_first"                           = "`name_first`"
+      # , "name_last"                            = "`name_last`"
+      # , "address"                              = "`address`"
+      # , "telephone"                              = "`telephone`"
+      # , "email"                                  = "`email`"
+      , "dob"                                    = "`dob`"
+      , "age"                                    = "`age`"
+      , "male"                                   = "`sex`"
+      , "demographics_complete"                  = "`demographics_complete`"
+      , "height_in_cm"                           = "height"
+      , "weight_in_kg"                           = "weight"
+      , "bmi"                                    = "`bmi`"
+      , "comments_participant"                   = "`comments`"
+      # , "mugshot"                                = "`mugshot`"
+      , "health_complete"                        = "`health_complete`"
+      , "race_native_american"                   = "`race___1`"
+      , "race_asian"                             = "`race___2`"
+      , "race_pacific"                           = "`race___3`"
+      , "race_black"                             = "`race___4`"
+      , "race_white"                             = "`race___5`"
+      , "race_mixed"                             = "`race___6`"
+      , "ethnicity"                              = "`ethnicity`"
+      , "race_and_ethnicity_complete"            = "`race_and_ethnicity_complete`"
     ) %>% 
     dplyr::mutate(
       
       # Convert the character to an official date
-      dob          =  as.Date(dob,  "%Y-%m-%d"),
+      dob                                        = as.Date(dob,  "%Y-%m-%d"),
+      
+      # Convert to Boolean variables
+      male                                       = as.logical(bmi),
+      race_native_american                       = as.logical(race_native_american),
+      race_asian                                 = as.logical(race_asian),
+      race_pacific                               = as.logical(race_pacific),
+      race_black                                 = as.logical(race_black),
+      race_white                                 = as.logical(race_white),
+      race_mixed                                 = as.logical(race_mixed),
+      
+      demographics_complete                      = as.logical(demographics_complete),
+      health_complete                            = as.logical(health_complete),
+      race_and_ethnicity_complete                = as.logical(race_and_ethnicity_complete),
   
       # Convert to factor variables
-      ethnicity    = factor(ethnicity, levels=0:2, labels=c("Hispanic or Latino", "NOT Hispanic or Latino", "Unknown / Not Reported")),
-      ethnicity    = ReplaceNAsWithFactorLevel(ethnicity, addUnknownLevel=TRUE),
+      ethnicity                                  = dplyr::recode_factor(ethnicity, `0`="Hispanic or Latino", `1`="NOT Hispanic or Latino", `2`="Unknown or Not Reported", .missing="Unknown or Not Reported")
+    )
   
-      race_and_ethnicity_complete = factor(race_and_ethnicity_complete, levels=seq_along(labels_race), labels=labels_race)
-  )
+
+  # ---- verify-values -----------------------------------------------------------
+  # Sniff out problems here, or in the specific form of the form.
+  testit::assert("The record_id value must be nonmissing.", all(!is.na(d$record_id)))
+  testit::assert("The BMI value must be missing or greater than 6.", all(is.na(d$bmi) | (d$bmi > 10)))
+  testit::assert("The DOB values must follow Jan 1930.", all(as.Date("1930-01-01") < d$dob))
   
   
   # ---- return-dataset -----------------------------------------------------------
   return( d )
+  
 }
 
 
@@ -72,19 +101,3 @@ retrieve_mice <- function( ) {
 
 #Retrieve all fields:
 # ds <- retrieve_mice()
-
-
-#############################
-### Convert multi-valued variables
-#############################
-
-#This particular dataset doesn't have these examples.  Here's one from a different dataset.
-# demods <- plyr::rename(demods, replace=c(
-#   psycho18___1="Never", 
-#   psycho18___2="LunchDetention", 
-#   psycho18___3="InSchoolSuspension", 
-#   psycho18___4="OutOfSchoolSuspension",
-#   psycho18___5="TrafficViolations",
-#   psycho18___6="MultipleLawEnforcementEncounters",
-#   psycho18___7="OnProbation"
-# ))
