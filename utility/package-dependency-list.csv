@@ -27,6 +27,7 @@ lubridate,TRUE,TRUE,,"Consistent/convenient function signatures for manipulating
 magrittr,TRUE,TRUE,,"Pipe-like operator needed for dplyr."
 mgcv,TRUE,TRUE,,"Generalized additive models."
 modeest,TRUE,TRUE,,"Estimating the mode of unimodal distributions."
+OuhscMunge,FALSE,TRUE,OuhscBbmc,"Data manipulation operations."
 plyr,TRUE,TRUE,,"Important for most of our data manipulation. But don't load with library() or require()."
 R2OpenBUGS,TRUE,TRUE,,"Interact with the Bayesian modeling software, OpenBugs."
 R2WinBUGS,TRUE,TRUE,,"Interact with the Bayesian modeling software, WinBugs."
