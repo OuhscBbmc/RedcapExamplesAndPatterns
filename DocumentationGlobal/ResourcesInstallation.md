@@ -13,7 +13,8 @@ The order matters.
 ### Installation (optional)
 The order does not matter.
 
-* **[ODBC Driver for SQL Server](https://www.microsoft.com/en-us/download/details.aspx?id=53339)** For connecting to the [token server](https://github.com/OuhscBbmc/REDCapR/blob/master/vignettes/SecurityDatabase.Rmd), if your institution is using one.  As of this writing, version 13.1 is the most recent driver version.  See if a new one exists.
+* **[ODBC Driver for SQL Server](https://www.microsoft.com/en-us/download/details.aspx?id=53339)** is for connecting to the [token server](https://github.com/OuhscBbmc/REDCapR/blob/master/vignettes/SecurityDatabase.Rmd), if your institution is using one.  As of this writing, version 13.1 is the most recent driver version.  See if a new one exists. {added Feb 2017}
+* **[R Tools for Windows](https://cran.r-project.org/bin/windows/Rtools/)** is necessary to build some packages in development hosted on GitHub. {added Feb 2017}
 * **[msysGit](http://msysgit.github.com/)** allows RStudio to track changes and commit & sync them to the GitHub server. Connect RStudio to GitHub repository.  I moved this to optional (Oct 14, 2012) because the GitHub client (see above) does almost everything that the RStudio plugin does; and it does it a little better and a little more robust; and its installation hasn't given me problems.  {added Oct 2012}
   * Starting in the top right of RStudio, click: Project -> New Project -> Create Project from Version Control -> Git  {added Sept 2012}
   * An example of a repository URL is https://github.com/OuhscBbmc/RedcapExamplesAndPatterns. Specify a location to save (a copy of) the project on your local computer.  {added Sept 2012}
