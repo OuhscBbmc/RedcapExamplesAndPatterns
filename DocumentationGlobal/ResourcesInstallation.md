@@ -7,19 +7,23 @@ The order matters.
 1. **[RStudio Desktop](http://www.rstudio.com/ide/download/desktop)** is the IDE (integrated design interface) that you'll use to interact with R, GitHub, Markdown, and LaTeX. Updates can be checked easily through the menus `Help` -> `Check for updates`.   {added Sept 2012}
 1. **Several R Packages** will need to be installed. Running the R script [`install-packages.R`](https://github.com/OuhscBbmc/RedcapExamplesAndPatterns/blob/master/utility/install-packages.R) (located in the `utility/` directory) downloads and installs only the packages that aren't already on your computer.  Create a new 'personal library' if it prompts you.  The script also updates existing packages if a newer version is available.  The list of packages will grow as we develop the reports.  Help keep the list updated. {added Sept 2012}
 1. **Several R Packages** might need to be updated.  Unless you've been told not to (because it would break something -this is rare), periodically update the packages by executing the following code `update.packages(ask="graphics", checkBuilt=TRUE)`. {added Sept 2012}
-1. **[GitHub](https://github.com/)** registration is necessary to push modified files to the repository.    First, register a free user account at https://github.com/plans.  Then tell the repository owner your exact username, and they'll add you as a collaborator to our GitHub repository (eg, https://github.com/OuhscBbmc/RedcapExamplesAndPatterns). {added Sept 2012}
+1. **[GitHub](https://github.com/)** registration is necessary to push modified files to the repository.    First, register a free user account at https://github.com/plans.  Then tell the repository owner your exact username, and they'll add you as a collaborator  (eg, to https://github.com/OuhscBbmc/RedcapExamplesAndPatterns). {added Sept 2012}
 1. **[GitHub for Windows Client](http://windows.github.com/)** does the basic tasks a little easier the git features built into RStudio.  {added Oct 2012}
-                              
-### Installation (optional)
-The order does not matter.
+
+### Installation (recommended)
+The order does not matter.     
 
 * **[ODBC Driver for SQL Server](https://www.microsoft.com/en-us/download/details.aspx?id=53339)** is for connecting to the [token server](https://github.com/OuhscBbmc/REDCapR/blob/master/vignettes/SecurityDatabase.Rmd), if your institution is using one.  As of this writing, version 13.1 is the most recent driver version.  See if a new one exists. {added Feb 2017}
 * **[R Tools for Windows](https://cran.r-project.org/bin/windows/Rtools/)** is necessary to build some packages in development hosted on GitHub. {added Feb 2017}
+* **[Notepad++](http://notepad-plus-plus.org/)** lets you look at the raw CSV text when I'm troubleshooting issues (instead of looking at the file through Excel, which masks & causes some issues).  {added Sept 2012}
+                         
+### Installation (optional)
+The order does not matter.
+
 * **[msysGit](http://msysgit.github.com/)** allows RStudio to track changes and commit & sync them to the GitHub server. Connect RStudio to GitHub repository.  I moved this to optional (Oct 14, 2012) because the GitHub client (see above) does almost everything that the RStudio plugin does; and it does it a little better and a little more robust; and its installation hasn't given me problems.  {added Oct 2012}
   * Starting in the top right of RStudio, click: Project -> New Project -> Create Project from Version Control -> Git  {added Sept 2012}
   * An example of a repository URL is https://github.com/OuhscBbmc/RedcapExamplesAndPatterns. Specify a location to save (a copy of) the project on your local computer.  {added Sept 2012}
 
-* **[Notepad++](http://notepad-plus-plus.org/)** lets you look at the raw CSV text when I'm troubleshooting issues (instead of looking at the file through Excel, which masks & causes some issues).  {added Sept 2012}
 * **[MiKTeX](http://miktex.org/)** is necessary only if you're using Sweave or knitr to produce *LaTeX* files (and not just *markdown* files).  It's a huge, slow installation that can take an hour or two.  {added Sept 2012}
 * **[SourceTree](http://www.sourcetreeapp.com/)** is a rich client that has many more features than the GitHub client.  I don't recommend it for beginners, since it has more ways to mess up things.  But for developers, it nicely fills a spot in between the GitHub client and command-line operations.  The branching visualization is really nice too. Unfortunately and ironically, it doesn't currently support Linux. {added Sept 2014}.
 * **[git-cola](http://git-cola.github.io/)** is probably the best GUI for Git supported on Linux.  It's available through the official [Ubuntu repositories](http://packages.ubuntu.com/search?keywords=git-cola) with `apt-get` (also see [this](https://apps.ubuntu.com/cat/applications/git-cola/)).  The branch visualization features are in a different, but related program, 'git dag'.  {added Sept 2014}
