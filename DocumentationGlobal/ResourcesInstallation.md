@@ -43,6 +43,32 @@ The order does not matter.
 * **[GitHub for Eclipse](http://eclipse.github.com/)** is something I discourage for a beginner, and I strongly recommend you start with RStudio (and [GitHub Client](http://windows.github.com/) or the git capabilities within RStudio) for a few months before you even consider Eclipse.  It's included in this list for the sake of completeness. When installing EGit plug-in, ignore eclipse site and check out this youtube video:http://www.youtube.com/watch?v=I7fbCE5nWPU.
 * **[Color Oracle](http://colororacle.org/)** simulates the three most common types of color blindness.  If you have produce a color graph in a report you develop, check it with Color Oracle (or ask someone else too).  If it's already installed, it takes less than 10 second to check it against all three types of color blindness. If it's not installed, extra work may be necessary if Java isn't already installed.  When you download the zip, extract the `ColorOracle.exe` program where you like. {added Sept 2012}
 * **[pandoc](http://johnmacfarlane.net/pandoc/)** converts files from one markup format into another.  We'll possibly use this to create tables in MS Word (for article submissions). {added Sept 2012} 
+* **Ubuntu** desktop 17.04 required these debian packages to be installed before the R packages.
+
+    ```sh
+    # Git
+    sudo apt-get install git-core
+    
+    # The 'xml2' package:
+    sudo apt-get install r-cran-xml
+
+    # The 'curl' package, and others
+    sudo apt-get install libssl-dev libcurl4-openssl-dev
+
+    # The 'udunits2' package: https://cran.r-project.org/web/packages/udunits2/index.html
+    sudo apt-get install libudunits2-dev
+    
+    # The 'odbc' package: https://github.com/r-dbi/odbc#linux---debian--ubuntu
+    sudo apt-get install tdsodbc odbc-postgresql libsqliteodbc
+    
+    # Some package I forgot, maybe 'svglite'
+    sudo apt-get install libcairo2-dev
+    
+    # For the 'sf' package: https://github.com/r-spatial/sf#ubuntu
+    sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+    sudo apt-get update
+    sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev 
+
 
 ### Location Examples
 * **GitHub repository** https://github.com/OuhscBbmc/RedcapExamplesAndPatterns {added Sept 2012}
