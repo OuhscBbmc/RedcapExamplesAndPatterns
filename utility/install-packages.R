@@ -13,10 +13,10 @@ if( !file.exists(path_csv)) {
   base::stop("The path `", path_csv, "` was not found.  Make sure the working directory is set to the root of the repository.")
 }
 
-if( !base::requireNamespace("devtools") ) {
-  utils::install.packages("devtools", repos="http://cran.rstudio.com")
+if( !base::requireNamespace("remotes") ) {
+  utils::install.packages("remotes", repos="http://cran.rstudio.com")
 }
 
-devtools::install_github("OuhscBbmc/OuhscMunge")
+remotes::install_github("OuhscBbmc/OuhscMunge")
 
 OuhscMunge:::package_janitor(path_csv)
