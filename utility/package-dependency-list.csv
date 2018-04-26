@@ -6,6 +6,7 @@ classInt,TRUE,TRUE,,"Choosing univariate class intervals for mapping or other gr
 coda,TRUE,TRUE,,"MCMC monitoring."
 colorspace,TRUE,TRUE,,"Explicit control over the HCL color scheme."
 corrplot,TRUE,TRUE,,"Correlation matrix plot."
+config,TRUE,TRUE,,"Wrapper around reading from yaml settings."
 curl,TRUE,TRUE,,"Connecting with web resources."
 data.table,TRUE,FALSE,,"An alternative to dplyr."
 devtools,TRUE,TRUE,,"RStudio's package of auxiliary functions for package development."
