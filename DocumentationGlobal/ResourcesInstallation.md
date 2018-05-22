@@ -56,6 +56,9 @@ The order does not matter.
     ```sh
     # Git
     sudo apt-get install git-core
+    git config --global user.email "wibeasley@hotmail.com"
+    git config --global user.name "Will Beasley"
+    git config --global credential.helper 'cache --timeout=3600000'
 
     # The 'xml2' package:
     sudo apt-get install r-cran-xml
