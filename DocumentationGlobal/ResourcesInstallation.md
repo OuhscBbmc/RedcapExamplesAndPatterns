@@ -26,7 +26,13 @@ The order does not matter.
     * [minimap](https://atom.io/packages/minimap): A preview of the full source code (in the right margin).
     * [script](https://atom.io/packages/script): Run scripts based on file name, a selection of code, or by line number.
     * [git-plus](https://atom.io/packages/git-plus): Do git things without the terminal (I don't think this is necessary anymore).
-    
+
+    The packages can be installed through Atom, or through the `apm` utility in the command line:
+        
+    ```bash
+    apm install sublime-style-column-selection atom-language-r language-csv atom-beautify atom-wrap-in-tag minimap script
+    ```
+
 * **[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)** is an easy way to access the database and write queries (and transfer the SQL to an R file).   It's not required for the REDCap API, but it's usually necessary when integrating REDCap with other databases.
 * **[Pulse Secure](https://connect.ouhsc.edu)** is VPN client for OUHSC researchers.  It's not required for the REDCap API, but it's usually necessary to communicate with other campus data sources.
                          
@@ -61,7 +67,7 @@ The order does not matter.
     sudo apt-get install libudunits2-dev
     
     # The 'odbc' package: https://github.com/r-dbi/odbc#linux---debian--ubuntu
-    sudo apt-get install tdsodbc odbc-postgresql libsqliteodbc
+    sudo apt-get install unixodbc-dev tdsodbc odbc-postgresql libsqliteodbc
     
     # Some package I forgot, maybe 'svglite'
     sudo apt-get install libcairo2-dev
