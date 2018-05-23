@@ -61,7 +61,7 @@ The order does not matter.
     git config --global credential.helper 'cache --timeout=3600000'
 
     # The 'xml2' package:
-    sudo apt-get install r-cran-xml
+    sudo apt-get install libxml2-dev r-cran-xml
 
     # The 'curl' package, and others
     sudo apt-get install libssl-dev libcurl4-openssl-dev
@@ -71,6 +71,9 @@ The order does not matter.
 
     # The 'odbc' package: https://github.com/r-dbi/odbc#linux---debian--ubuntu
     sudo apt-get install unixodbc-dev tdsodbc odbc-postgresql libsqliteodbc
+
+    # The 'sys' package
+    sudo apt-get install libapparmor-dev
 
     # Some package I forgot, maybe 'svglite'
     sudo apt-get install libcairo2-dev
