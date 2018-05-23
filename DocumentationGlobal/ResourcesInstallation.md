@@ -79,13 +79,27 @@ The order does not matter.
     # The 'odbc' package: https://github.com/r-dbi/odbc#linux---debian--ubuntu
     sudo apt-get install unixodbc-dev tdsodbc odbc-postgresql libsqliteodbc
 
+    # The 'rgl' package
+    sudo apt-get install libcgal-dev libglu1-mesa-dev libglu1-mesa-dev
+
+    # The 'magick' package
+    sudo apt-get install 'libmagick++-dev'
+
+    # The 'pdftools' and 'Rpoppler' packages, which involve PDFs
+    sudo apt-get install libpoppler-cpp-dev libpoppler-glib-dev
+
     # The 'sys' package
     sudo apt-get install libapparmor-dev
 
     # Some package I forgot, maybe 'svglite'
     sudo apt-get install libcairo2-dev
 
-    # For the 'sf' package: https://github.com/r-spatial/sf#ubuntu
+    # 'rJava' and others
+    sudo apt-get install default-jre default-jdk
+    sudo R CMD javareconf
+    sudo apt-get install r-cran-rjava
+
+    # The 'sf' and other spatial packages: https://github.com/r-spatial/sf#ubuntu
     sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
     sudo apt-get update
     sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev

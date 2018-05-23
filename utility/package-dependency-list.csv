@@ -41,7 +41,7 @@ plyr,TRUE,TRUE,,"Important for most of our data manipulation. But don't load wit
 purrr,TRUE,TRUE,,"vector mapping and other functional programming practices."
 R2OpenBUGS,TRUE,TRUE,,"Interact with the Bayesian modeling software, OpenBugs."
 R2WinBUGS,TRUE,TRUE,,"Interact with the Bayesian modeling software, WinBugs."
-R2PPT,TRUE,TRUE,,"Generates PowerPoint slides."
+R2PPT,TRUE,FALSE,,"Generates PowerPoint slides."
 random,TRUE,TRUE,,"Creates random numbers for salts."
 RColorBrewer,TRUE,TRUE,,"Explicit control over the Color Brewer colors.  See http://colorbrewer2.org/."
 RcppRoll,TRUE,TRUE,,"Optimized window & rolling functions"
