@@ -19,4 +19,4 @@ if( !base::requireNamespace("remotes") ) {
 
 remotes::install_github("OuhscBbmc/OuhscMunge")
 
-OuhscMunge:::package_janitor(path_csv)
+OuhscMunge:::package_janitor_remote(path_csv)
