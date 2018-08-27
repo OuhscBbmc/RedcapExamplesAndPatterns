@@ -23,15 +23,34 @@ retrieve_clinical_trial <- function( ) {
 
   labels_race <-c("AmericanOrAlaskanNative", "Asian", "Native Hawaiian or other Pacific Islander", "Black", "White", "More than one race", "Unknown or Not reported")
 
+  # The lookup table of ethnicity values.  This metadata is typically read from a CSV, database, or REDCap data dictionary.
+  d_lu_ethnicity <- tibble::tribble(
+    ~ethnicity_id, ~ethnicity,
+               0L, "Hispanic or Latino",
+               1L, "NOT Hispanic or Latino",
+               2L, "Unknown / Not Reported"
+  )
+
+  d_lu_race      <- tibble::tribble(
+    ~race_id, ~race,
+          1L, "American or Alaskan Native",
+          2L, "Asian",
+          3L, "Native Hawaiian or other Pacific Islander",
+          4L, "Black",
+          5L, "White",
+          6L, "More than one race",
+        255L, "Unknown or not reported"
+  )
+
   # ---- load-data ---------------------------------------------------------------
 
   #Call REDCap and verify the read was a success.  Stop if it failed.
-  result <- REDCapR::redcap_read(
-    redcap_uri    = credential$redcap_uri,
-    token         = credential$token,
-    batch_size    = 200L,                         # Usually I set this 1000+.  The default '100' is conservative.
-    guess_type    = FALSE                         # Read everything as a string
-  )
+  # result <- REDCapR::redcap_read(
+  #   redcap_uri    = credential$redcap_uri,
+  #   token         = credential$token,
+  #   batch_size    = 200L,                         # Usually I set this 1000+.  The default '100' is conservative.
+  #   guess_type    = FALSE                         # Read everything as a string
+  # )
 
   testit::assert("The call to REDCap was not successful.  Please inspect the values of `result` for more details.", result$success )
 
@@ -42,82 +61,97 @@ retrieve_clinical_trial <- function( ) {
   object.size(d)
 
   # ---- tweak-data --------------------------------------------------------------
+  d_lu_ethnicity <- d_lu_ethnicity %>%
+    dplyr::mutate(
+      ethnicity   = as.factor(ethnicity)
+    )
+  d_lu_race <- d_lu_race %>%
+    dplyr::mutate(
+      race        = as.factor(race)
+    )
+
   # OuhscMunge::column_rename_headstart(d)
   d <- d %>%
-    dplyr::select_( #Select implicitly drops variables that aren't list below.
+    dplyr::select_( #Select implicitly drops variables that aren't listed below.
       "record_id"
       , "name_last"
       , "name_first"
       , "address"
       , "phone"
       , "dob"
-      , "ethnicity"
-      , "race"
+      , "ethnicity_id"                            = "ethnicity"
+      , "race_id"                                 = "race"
       , "gender"
-      , "height_cm"                               = "`height`"
-      , "weight_kg"                               = "`weight`"
+      , "height_cm"                               = "`height`" # Rename to make the units clearer.
+      , "weight_kg"                               = "`weight`" # Rename to make the units clearer.
       , "email"
       , "demographics_complete"
 
+      # If race had been coded with checkboxes and not a radiobuttons/dropdowns (ie, where more than one value could be selected),
+      #   Then be explicit about the code/map in the variable name itself.
       # , "race_native_american"                   = "`race___1`"
       # , "race_asian"                             = "`race___2`"
       # , "race_pacific"                           = "`race___3`"
       # , "race_black"                             = "`race___4`"
       # , "race_white"                             = "`race___5`"
       # , "race_mixed"                             = "`race___6`"
-      # , "ethnicity"                              = "`ethnicity`"
-      # , "race_and_ethnicity_complete"            = "`race_and_ethnicity_complete`"
     )  %>%
     dplyr::mutate(
       record_id                         = as.integer(record_id),
-
-
-      # Convert the character to an official date
-      dob                                        = as.Date(dob,  "%Y-%m-%d"),
+      dob                               = as.Date(dob,  "%Y-%m-%d"), # Convert the character to an official date
+      ethnicity_id                      = as.integer(ethnicity_id),
+      race_id                           = as.integer(race_id),
 
       # Create two variables for gender, for the sake of demonstration
       gender_male                       = as.logical(gender),
       gender                            = dplyr::recode(gender, `0` = "Female", `1` = "Male"),
 
-      # Convert ethnicity from an integer to a character
-      # 0	Hispanic or Latino
-      # 1	NOT Hispanic or Latino
-      # 2	Unknown / Not Reported
-      ethnicity                         = dplyr::recode(ethnicity, `0`="Hispanic or Latino", `1`="NOT Hispanic or Latino", `2`="Unknown / Not Reported"),
-
-      # Convert to Boolean variables
-      # race_native_american                       = as.logical(race_native_american),
-      # race_asian                                 = as.logical(race_asian),
-      # race_pacific                               = as.logical(race_pacific),
-      # race_black                                 = as.logical(race_black),
-      # race_white                                 = as.logical(race_white),
-      # race_mixed                                 = as.logical(race_mixed),
-      #
-      # demographics_complete                      = as.logical(demographics_complete),
-      # health_complete                            = as.logical(health_complete),
-      # race_and_ethnicity_complete                = as.logical(race_and_ethnicity_complete),
-      #
-      # # Convert to factor variables
-      # ethnicity                                  = dplyr::recode_factor(ethnicity, `0`="Hispanic or Latino", `1`="NOT Hispanic or Latino", `2`="Unknown or Not Reported", .missing="Unknown or Not Reported")
-
       height_cm                         = as.numeric(height_cm),
       weight_kg                         = as.numeric(weight_kg),
 
       demographics_complete             = as.logical(demographics_complete)
+    ) %>%
+    dplyr::left_join(d_lu_ethnicity, by="ethnicity_id") %>%
+    dplyr::mutate(
+      # Here are two alternatives to `ethnicity`, which used a lookup table and database join.
+      # Convert ethnicity from an integer to a character
+      ethnicity_v2                         = dplyr::recode(       ethnicity_id, `0`="Hispanic or Latino", `1`="NOT Hispanic or Latino", `2`="Unknown / Not Reported"),
+      # Convert ethnicity from an integer to a factor.
+      #    The ordered property sometime helps the presentation & consistency in graphs and Type-III linear models.
+      ethnicity_v3                         = dplyr::recode_factor(ethnicity_id, `0`="Hispanic or Latino", `1`="NOT Hispanic or Latino", `2`="Unknown / Not Reported")
+    ) %>%
+    dplyr::left_join(d_lu_race, by = "race_id") %>%
+    dplyr::mutate(
+      # If race had been coded with checkboxes and not a radiobuttons/dropdowns (ie, where more than one value could be selected),
+      #   Then convert the characters of "0" and "1" to TRUE/FALSE
+
+      # race_native_american              = as.logical(as.integer(race_native_american)),
+      # race_asian                        = as.logical(as.integer(race_asian)),
+      # race_pacific                      = as.logical(as.integer(race_pacific)),
+      # race_black                        = as.logical(as.integer(race_black)),
+      # race_white                        = as.logical(as.integer(race_white)),
+      # race_mixed                        = as.logical(as.integer(race_mixed)),
+    ) %>%
+    dplyr::arrange(record_id) %>%
+    dplyr::select(
+      # Drop the ID variables that aren't useful to the downstream analysis files.
+      -ethnicity_id, -race_id
     )
 
 
   # ---- verify-values -----------------------------------------------------------
   # Sniff out problems here, or in the specific form of the form.
-  # OuhscMunge::verify_value_headstart(d2)
+  # OuhscMunge::verify_value_headstart(d)
   checkmate::assert_integer(  d$record_id             , any.missing=F , lower=1, upper=500                                       , unique=T)
   checkmate::assert_character(d$name_last             , any.missing=F , pattern="^.{1,255}$"                                      , unique=T)
   checkmate::assert_character(d$name_first            , any.missing=F , pattern="^.{1,255}$"                                      )
   checkmate::assert_character(d$address               , any.missing=F , pattern="^.{1,255}$"                                      , unique=T)
   checkmate::assert_character(d$phone                 , any.missing=F , pattern="^.{10}$"                                     , unique=T)
   checkmate::assert_date(     d$dob                   , any.missing=F , lower=as.Date("1930-08-06"), upper=as.Date("2000-12-24") )
-  checkmate::assert_character(d$ethnicity             , any.missing=F , pattern="^.{18,22}$"                                     )
-  checkmate::assert_character(d$race                  , any.missing=F , pattern="^.{1,1}$"                                       )
+  checkmate::assert_factor(   d$ethnicity             , any.missing=F                                                            )
+  checkmate::assert_character(d$ethnicity_v2          , any.missing=F , pattern="^.{18,22}$"                                     )
+  checkmate::assert_factor(   d$ethnicity_v3          , any.missing=F                                                            )
+  checkmate::assert_factor(   d$race                  , any.missing=F                                                            )
   checkmate::assert_character(d$gender                , any.missing=F , pattern="^.{4,6}$"                                       )
   checkmate::assert_logical(  d$gender_male           , any.missing=T                                                            )
   checkmate::assert_numeric(  d$height_cm             , any.missing=F , lower=100, upper=250                                     )
