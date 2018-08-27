@@ -45,12 +45,12 @@ retrieve_clinical_trial <- function( ) {
   # ---- load-data ---------------------------------------------------------------
 
   #Call REDCap and verify the read was a success.  Stop if it failed.
-  # result <- REDCapR::redcap_read(
-  #   redcap_uri    = credential$redcap_uri,
-  #   token         = credential$token,
-  #   batch_size    = 200L,                         # Usually I set this 1000+.  The default '100' is conservative.
-  #   guess_type    = FALSE                         # Read everything as a string
-  # )
+  result <- REDCapR::redcap_read(
+    redcap_uri    = credential$redcap_uri,
+    token         = credential$token,
+    batch_size    = 200L,                         # Usually I set this 1000+.  The default '100' is conservative.
+    guess_type    = FALSE                         # Read everything as a string
+  )
 
   testit::assert("The call to REDCap was not successful.  Please inspect the values of `result` for more details.", result$success )
 
@@ -72,6 +72,7 @@ retrieve_clinical_trial <- function( ) {
 
   # OuhscMunge::column_rename_headstart(d)
   d <- d %>%
+    tibble::as_tibble() %>%
     dplyr::select_( #Select implicitly drops variables that aren't listed below.
       "record_id"
       , "name_last"
@@ -166,7 +167,7 @@ retrieve_clinical_trial <- function( ) {
 
 
 #At the top of the file of the calling code, initially source this file (to load the function's definition. )
-# source("./dal/clinical-trial-arch")
+# source("./dal/clinical-trial-arch.R")
 
 #Retrieve all fields:
 # ds <- retrieve_clinical_trial()
