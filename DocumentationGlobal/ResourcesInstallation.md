@@ -41,6 +41,13 @@ The order does not matter.
     ```
 
 * **[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)** is an easy way to access the database and write queries (and transfer the SQL to an R file).   It's not required for the REDCap API, but it's usually necessary when integrating REDCap with other databases.
+
+    Note: we save the database *structure* (not data) on GitHub, so we can easily track/monitor the structual changes over time.  In the SSMS 'Tools | Options' dialog box, here are some non-default changes that faciliate our workflow.
+    1. 'SQL Server Object Explorer' | 'Scripting' | 'Include descriptive headers': False
+    1. 'SQL Server Object Explorer' | 'Scripting' | 'Script extended properties': False
+    1. 'Designers' | 'Table and Databas Designers' | 'Prevent saving changes that require table-recreation': unchecked
+
+
 * **[Pulse Secure](https://connect.ouhsc.edu)** is VPN client for OUHSC researchers.  It's not required for the REDCap API, but it's usually necessary to communicate with other campus data sources.
 
 ### Installation (optional)
