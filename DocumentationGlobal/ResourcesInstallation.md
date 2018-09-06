@@ -47,6 +47,7 @@ The order does not matter.
     1. 'SQL Server Object Explorer' | 'Scripting' | 'Script extended properties': False
     1. 'Designers' | 'Table and Databas Designers' | 'Prevent saving changes that require table-recreation': unchecked
 
+    For more details, see [setting-up-dev-machine.md](https://github.com/OuhscBbmc/bbmc-database-management/blob/master/maintenance/setting-up-server/setting-up-dev-machine.md) (in a private repo that's restricted to BBMC members).
 
 * **[Pulse Secure](https://connect.ouhsc.edu)** is VPN client for OUHSC researchers.  It's not required for the REDCap API, but it's usually necessary to communicate with other campus data sources.
 
