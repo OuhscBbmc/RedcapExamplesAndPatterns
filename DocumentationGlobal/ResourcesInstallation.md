@@ -42,10 +42,11 @@ The order does not matter.
 
 * **[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)** is an easy way to access the database and write queries (and transfer the SQL to an R file).   It's not required for the REDCap API, but it's usually necessary when integrating REDCap with other databases.
 
-    Note: we save the database *structure* (not data) on GitHub, so we can easily track/monitor the structual changes over time.  In the SSMS 'Tools | Options' dialog box, here are some non-default changes that faciliate our workflow.
+    Note: here are some non-default changes that faciliate our workflow.  The first three help when we save the database *structure* (not data) on GitHub, so we can easily track/monitor the structual changes over time.  The fourth makes the [result font bigger](https://blog.sqlauthority.com/2016/05/31/sql-server-ssms-tip-get-larger-fonts-results-grid-output/).  In the SSMS 'Tools | Options' dialog box:
     1. 'SQL Server Object Explorer' | 'Scripting' | 'Include descriptive headers': False
     1. 'SQL Server Object Explorer' | 'Scripting' | 'Script extended properties': False
     1. 'Designers' | 'Table and Databas Designers' | 'Prevent saving changes that require table-recreation': unchecked
+    1. 'Environment' | 'Fonts and Colors' | 'Show settings for: Grid Results'
 
     For more details, see [setting-up-dev-machine.md](https://github.com/OuhscBbmc/bbmc-database-management/blob/master/maintenance/setting-up-server/setting-up-dev-machine.md) (in a private repo that's restricted to BBMC members).
 
