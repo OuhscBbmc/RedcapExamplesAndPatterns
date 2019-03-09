@@ -115,7 +115,7 @@ The order does not matter.
     # The 'sf' and other spatial packages: https://github.com/r-spatial/sf#ubuntu
     sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
     sudo apt-get update
-    sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+    sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev libgeos++-dev
 
     # For databases
     sudo apt-get install sqlite sqliteman
