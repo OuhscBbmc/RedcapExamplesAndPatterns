@@ -65,7 +65,7 @@ The order does not matter.
     1. 'Text Editor' | 'Editor Tab and Status Bar' | 'Tab Text' | 'Include Server Name': false
     1. 'Text Editor' | 'Editor Tab and Status Bar' | 'Tab Text' | 'Include Database Name': false
     1. 'Text Editor' | 'Editor Tab and Status Bar' | 'Tab Text' | 'Include Login Name': false
-    1. 'Text Editor' | 'Transact-SQL' | 'General' | 'Line Numbers': true
+    1. 'Text Editor' | 'All Languages' | 'General' | 'Line Numbers': true
 
     For more details, see [setting-up-dev-machine.md](https://github.com/OuhscBbmc/bbmc-database-management/blob/master/maintenance/setting-up-server/setting-up-dev-machine.md) (in a private repo that's restricted to BBMC members).
 
