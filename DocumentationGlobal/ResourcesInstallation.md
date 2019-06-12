@@ -74,73 +74,80 @@ The order does not matter.
 ### Installation (optional)
 The order does not matter.
 
-* **[msysGit](http://msysgit.github.com/)** allows RStudio to track changes and commit & sync them to the GitHub server. Connect RStudio to GitHub repository.  I moved this to optional (Oct 14, 2012) because the GitHub client (see above) does almost everything that the RStudio plugin does; and it does it a little better and a little more robust; and its installation hasn't given me problems.  {added Oct 2012}
-  * Starting in the top right of RStudio, click: Project -> New Project -> Create Project from Version Control -> Git  {added Sept 2012}
-  * An example of a repository URL is https://github.com/OuhscBbmc/RedcapExamplesAndPatterns. Specify a location to save (a copy of) the project on your local computer.  {added Sept 2012}
+* **[Git](https://git-scm.com/downloads)** command-line utility enables some advanced operations that the GitHub client doesn't support.  Use the default installation options, except these preferences of ours:
+    1. Nano is the default text editor.
 
+* **GitLab SSL Certificate** isn't software, but still needs to be configured.  
+    1. Talk to Will for the server URL and the `*.cer` file.
+    1. Save the file in something like `~/keys/ca-bundle-gitlab.cer`
+    1. Associate the file with `git config --global http.sslCAInfo ...path.../ca-bundle-gitlab.cer` (but replace `...path...`).
 * **[MiKTeX](http://miktex.org/)** is necessary only if you're using knitr or Sweave to produce *LaTeX* files (and not just *markdown* files).  It's a huge, slow installation that can take an hour or two.  {added Sept 2012}
-* **[CSVed](http://csved.sjfrancke.nl/)** is a lightweight program for viewing data files.  It fits somewhere between a text editor and Excel.
 * **[LibreOffice Calc](https://www.libreoffice.org/discover/calc/)** is an alternative to Excel.  Unlike it Excel, it doesn't guess much with formatting (which usually mess up things, especially dates).
 * **[Visual Studio Code](https://code.visualstudio.com/)** is an extensible text editor that runs on Windows and Linux, similar to [Atom](https://atom.io/) (described above).  It's much [lighter](https://stackoverflow.com/questions/30527522/what-are-the-differences-between-visual-studio-code-and-visual-studio) than the full [Visual Studio](https://visualstudio.microsoft.com/).  Like Atom, it supports browsing through the directory structure, replacing across files, interaction with git, and previewing markdown.  Currently, it supports searching CSVs better than Atom.  Productivity is enchanced with the following extensions:  {added Dec 2018}
     * [Excel Viewer](https://marketplace.visualstudio.com/items?itemName=GrapeCity.gc-excelviewer) isn't a good name, but I've liked the capability.  It displays CSVs and other files in a grid. {added Dec 2018}
     * [Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) color codes the columns, but still allows you to see and edit the raw plain-text file. {added Dec 2018}
     * [SQL Server](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) allows you to execute against a database, and view/copy/save the grid results.  It doesn't replicate all SSMS features, but is nice as your scanning through files. {added Dec 2018}
     * [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) produces  green squiggly lines under words not in its dictionary.  You can add words to your user dictionary, or a project dictionary.
- * **[SourceTree](http://www.sourcetreeapp.com/)** is a rich client that has many more features than the GitHub client.  I don't recommend it for beginners, since it has more ways to mess up things.  But for developers, it nicely fills a spot in between the GitHub client and command-line operations.  The branching visualization is really nice too. Unfortunately and ironically, it doesn't currently support Linux. {added Sept 2014}.
-* **[git-cola](http://git-cola.github.io/)** is probably the best GUI for Git supported on Linux.  It's available through the official [Ubuntu repositories](http://packages.ubuntu.com/search?keywords=git-cola) with `apt-get` (also see [this](https://apps.ubuntu.com/cat/applications/git-cola/)).  The branch visualization features are in a different, but related program, 'git dag'.  {added Sept 2014}
-* **[GitHub for Eclipse](http://eclipse.github.com/)** is something I discourage for a beginner, and I strongly recommend you start with RStudio (and [GitHub Client](http://windows.github.com/) or the git capabilities within RStudio) for a few months before you even consider Eclipse.  It's included in this list for the sake of completeness. When installing EGit plug-in, ignore eclipse site and check out this youtube video:http://www.youtube.com/watch?v=I7fbCE5nWPU.
-* **[Color Oracle](http://colororacle.org/)** simulates the three most common types of color blindness.  If you have produce a color graph in a report you develop, check it with Color Oracle (or ask someone else too).  If it's already installed, it takes less than 10 second to check it against all three types of color blindness. If it's not installed, extra work may be necessary if Java isn't already installed.  When you download the zip, extract the `ColorOracle.exe` program where you like. {added Sept 2012}
 * **[pandoc](http://johnmacfarlane.net/pandoc/)** converts files from one markup format into another.  We'll possibly use this to create tables in MS Word (for article submissions). {added Sept 2012}
-* **Ubuntu** desktop 17.04 follows [these instructions](https://askubuntu.com/a/862520/153921) for the R and RStudio and required these debian packages to be installed before the R packages.
 
-    ```sh
-    # Git
-    sudo apt-get install git-core
-    git config --global user.email "wibeasley@hotmail.com"
-    git config --global user.name "Will Beasley"
-    git config --global credential.helper 'cache --timeout=3600000'
 
-    # The 'xml2' package:
-    sudo apt-get install libxml2-dev r-cran-xml
+### Ubuntu
 
-    # The 'curl' package, and others
-    sudo apt-get install libssl-dev libcurl4-openssl-dev
+Ubuntu desktop 17.04 follows [these instructions](https://askubuntu.com/a/862520/153921) for the R and RStudio and required these debian packages to be installed before the R packages.
 
-    # The 'udunits2' package: https://cran.r-project.org/web/packages/udunits2/index.html
-    sudo apt-get install libudunits2-dev
+  ```sh
+  # Git
+  sudo apt-get install git-core
+  git config --global user.email "wibeasley@hotmail.com"
+  git config --global user.name "Will Beasley"
+  git config --global credential.helper 'cache --timeout=3600000'
 
-    # The 'odbc' package: https://github.com/r-dbi/odbc#linux---debian--ubuntu
-    sudo apt-get install unixodbc-dev tdsodbc odbc-postgresql libsqliteodbc
+  # The 'xml2' package:
+  sudo apt-get install libxml2-dev r-cran-xml
 
-    # The 'rgl' package
-    sudo apt-get install libcgal-dev libglu1-mesa-dev libglu1-mesa-dev
+  # The 'curl' package, and others
+  sudo apt-get install libssl-dev libcurl4-openssl-dev
 
-    # The 'magick' package
-    sudo apt-get install 'libmagick++-dev'
+  # The 'udunits2' package: https://cran.r-project.org/web/packages/udunits2/index.html
+  sudo apt-get install libudunits2-dev
 
-    # The 'pdftools' and 'Rpoppler' packages, which involve PDFs
-    sudo apt-get install libpoppler-cpp-dev libpoppler-glib-dev
+  # The 'odbc' package: https://github.com/r-dbi/odbc#linux---debian--ubuntu
+  sudo apt-get install unixodbc-dev tdsodbc odbc-postgresql libsqliteodbc
 
-    # The 'sys' package
-    sudo apt-get install libapparmor-dev
+  # The 'rgl' package
+  sudo apt-get install libcgal-dev libglu1-mesa-dev libglu1-mesa-dev
 
-    # Some package I forgot, maybe 'svglite'
-    sudo apt-get install libcairo2-dev
+  # The 'magick' package
+  sudo apt-get install 'libmagick++-dev'
 
-    # 'rJava' and others
-    sudo apt-get install default-jre default-jdk
-    sudo R CMD javareconf
-    sudo apt-get install r-cran-rjava
+  # The 'pdftools' and 'Rpoppler' packages, which involve PDFs
+  sudo apt-get install libpoppler-cpp-dev libpoppler-glib-dev
 
-    # The 'sf' and other spatial packages: https://github.com/r-spatial/sf#ubuntu
-    sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
-    sudo apt-get update
-    sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev libgeos++-dev
+  # The 'sys' package
+  sudo apt-get install libapparmor-dev
 
-    # For databases
-    sudo apt-get install sqlite sqliteman
-    sudo apt-get install postgresql postgresql-contrib pgadmin3
-    ```
+  # The 'sf' and other spatial packages: https://github.com/r-spatial/sf#ubuntu
+  sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+  sudo apt-get update
+  sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev libgeos++-dev
+
+  # Some package I forgot, maybe 'svglite'
+  sudo apt-get install libcairo2-dev
+
+  # 'rJava' and others
+  sudo apt-get install default-jre default-jdk
+  sudo R CMD javareconf
+  sudo apt-get install r-cran-rjava
+
+  # The 'sf' and other spatial packages: https://github.com/r-spatial/sf#ubuntu
+  sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+  sudo apt-get update
+  sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+
+  # For databases
+  sudo apt-get install sqlite sqliteman
+  sudo apt-get install postgresql postgresql-contrib pgadmin3
+  ```
 
 
 ### Location Examples
@@ -154,3 +161,19 @@ The order does not matter.
 * **Git**: Will Beasley resorted to this workaround Sept 2012: http://stackoverflow.com/questions/3431361/git-for-windows-the-program-cant-start-because-libiconv2-dll-is-missing.  And then he copied the following four files from `D:/Program Files/msysgit/mingw/bin/` to `D:/Program Files/msysgit/bin/`: (1) `libiconv2.dll`, (2) `libcurl-4.dll`, (3) `libcrypto.dll`, and (4) `libssl.dll`. (If you install to the default location, you'll  move instead from `C:/msysgit/mingw/bin/` to `C:/msysgit/bin/`) {added Sept 2012}
 * **Git**: On a different computer, Will Beasley couldn't get RStudio to recognize msysGit, so installed the `Full installer for official Git for Windows 1.7.11` from (http://code.google.com/p/msysgit/downloads/list) and switched the Git Path in the RStudio Options. {added Sept 2012}
 * **RStudio** If something goes wrong with RStudio, re-installing might not fix the issue, because your personal preferences aren't erased.  To be safe, you can be thorough and delete the equivalent of `C:\Users\wibeasley\AppData\Local\RStudio-Desktop\`.  The options settings are stored (and can be manipulated) in this extentionless text file: `C:\Users\wibeasley\AppData\Local\RStudio-Desktop\monitored\user-settings\user-settings`. {added Sept 2012}
+
+
+### Retired Software
+
+We previously installed this software in this list.  Most have been replaced by software above that's either newer or more natural to use.
+
+
+* **[msysGit](http://msysgit.github.com/)** allows RStudio to track changes and commit & sync them to the GitHub server. Connect RStudio to GitHub repository.  I moved this to optional (Oct 14, 2012) because the GitHub client (see above) does almost everything that the RStudio plugin does; and it does it a little better and a little more robust; and its installation hasn't given me problems.  {added Oct 2012}
+  * Starting in the top right of RStudio, click: Project -> New Project -> Create Project from Version Control -> Git  {added Sept 2012}
+  * An example of a repository URL is https://github.com/OuhscBbmc/RedcapExamplesAndPatterns. Specify a location to save (a copy of) the project on your local computer.  {added Sept 2012}
+
+* **[CSVed](http://csved.sjfrancke.nl/)** is a lightweight program for viewing data files.  It fits somewhere between a text editor and Excel.
+* **[SourceTree](http://www.sourcetreeapp.com/)** is a rich client that has many more features than the GitHub client.  I don't recommend it for beginners, since it has more ways to mess up things.  But for developers, it nicely fills a spot in between the GitHub client and command-line operations.  The branching visualization is really nice too. Unfortunately and ironically, it doesn't currently support Linux. {added Sept 2014}.
+* **[git-cola](http://git-cola.github.io/)** is probably the best GUI for Git supported on Linux.  It's available through the official [Ubuntu repositories](http://packages.ubuntu.com/search?keywords=git-cola) with `apt-get` (also see [this](https://apps.ubuntu.com/cat/applications/git-cola/)).  The branch visualization features are in a different, but related program, 'git dag'.  {added Sept 2014}
+* **[GitHub for Eclipse](http://eclipse.github.com/)** is something I discourage for a beginner, and I strongly recommend you start with RStudio (and [GitHub Client](http://windows.github.com/) or the git capabilities within RStudio) for a few months before you even consider Eclipse.  It's included in this list for the sake of completeness. When installing EGit plug-in, ignore eclipse site and check out this youtube video:http://www.youtube.com/watch?v=I7fbCE5nWPU.
+* **[Color Oracle](http://colororacle.org/)** simulates the three most common types of color blindness.  If you have produce a color graph in a report you develop, check it with Color Oracle (or ask someone else too).  If it's already installed, it takes less than 10 second to check it against all three types of color blindness. If it's not installed, extra work may be necessary if Java isn't already installed.  When you download the zip, extract the `ColorOracle.exe` program where you like. {added Sept 2012}  
