@@ -65,56 +65,60 @@ The order does not matter.
 * **[MiKTeX](http://miktex.org/)** is necessary only if you're using knitr or Sweave to produce *LaTeX* files (and not just *markdown* files).  It's a huge, slow installation that can take an hour or two.  {added Sept 2012}
 * **[LibreOffice Calc](https://www.libreoffice.org/discover/calc/)** is an alternative to Excel.  Unlike it Excel, it doesn't guess much with formatting (which usually mess up things, especially dates).
 * **[pandoc](http://johnmacfarlane.net/pandoc/)** converts files from one markup format into another.  We'll possibly use this to create tables in MS Word (for article submissions). {added Sept 2012}
-* **Ubuntu** desktop 17.04 follows [these instructions](https://askubuntu.com/a/862520/153921) for the R and RStudio and required these debian packages to be installed before the R packages.
 
-    ```sh
-    # Git
-    sudo apt-get install git-core
-    git config --global user.email "wibeasley@hotmail.com"
-    git config --global user.name "Will Beasley"
-    git config --global credential.helper 'cache --timeout=3600000'
 
-    # The 'xml2' package:
-    sudo apt-get install libxml2-dev r-cran-xml
+### Ubuntu
 
-    # The 'curl' package, and others
-    sudo apt-get install libssl-dev libcurl4-openssl-dev
+Ubuntu desktop 17.04 follows [these instructions](https://askubuntu.com/a/862520/153921) for the R and RStudio and required these debian packages to be installed before the R packages.
 
-    # The 'udunits2' package: https://cran.r-project.org/web/packages/udunits2/index.html
-    sudo apt-get install libudunits2-dev
+  ```sh
+  # Git
+  sudo apt-get install git-core
+  git config --global user.email "wibeasley@hotmail.com"
+  git config --global user.name "Will Beasley"
+  git config --global credential.helper 'cache --timeout=3600000'
 
-    # The 'odbc' package: https://github.com/r-dbi/odbc#linux---debian--ubuntu
-    sudo apt-get install unixodbc-dev tdsodbc odbc-postgresql libsqliteodbc
+  # The 'xml2' package:
+  sudo apt-get install libxml2-dev r-cran-xml
 
-    # The 'rgl' package
-    sudo apt-get install libcgal-dev libglu1-mesa-dev libglu1-mesa-dev
+  # The 'curl' package, and others
+  sudo apt-get install libssl-dev libcurl4-openssl-dev
 
-    # The 'magick' package
-    sudo apt-get install 'libmagick++-dev'
+  # The 'udunits2' package: https://cran.r-project.org/web/packages/udunits2/index.html
+  sudo apt-get install libudunits2-dev
 
-    # The 'pdftools' and 'Rpoppler' packages, which involve PDFs
-    sudo apt-get install libpoppler-cpp-dev libpoppler-glib-dev
+  # The 'odbc' package: https://github.com/r-dbi/odbc#linux---debian--ubuntu
+  sudo apt-get install unixodbc-dev tdsodbc odbc-postgresql libsqliteodbc
 
-    # The 'sys' package
-    sudo apt-get install libapparmor-dev
+  # The 'rgl' package
+  sudo apt-get install libcgal-dev libglu1-mesa-dev libglu1-mesa-dev
 
-    # Some package I forgot, maybe 'svglite'
-    sudo apt-get install libcairo2-dev
+  # The 'magick' package
+  sudo apt-get install 'libmagick++-dev'
 
-    # 'rJava' and others
-    sudo apt-get install default-jre default-jdk
-    sudo R CMD javareconf
-    sudo apt-get install r-cran-rjava
+  # The 'pdftools' and 'Rpoppler' packages, which involve PDFs
+  sudo apt-get install libpoppler-cpp-dev libpoppler-glib-dev
 
-    # The 'sf' and other spatial packages: https://github.com/r-spatial/sf#ubuntu
-    sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
-    sudo apt-get update
-    sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+  # The 'sys' package
+  sudo apt-get install libapparmor-dev
 
-    # For databases
-    sudo apt-get install sqlite sqliteman
-    sudo apt-get install postgresql postgresql-contrib pgadmin3
-    ```
+  # Some package I forgot, maybe 'svglite'
+  sudo apt-get install libcairo2-dev
+
+  # 'rJava' and others
+  sudo apt-get install default-jre default-jdk
+  sudo R CMD javareconf
+  sudo apt-get install r-cran-rjava
+
+  # The 'sf' and other spatial packages: https://github.com/r-spatial/sf#ubuntu
+  sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+  sudo apt-get update
+  sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+
+  # For databases
+  sudo apt-get install sqlite sqliteman
+  sudo apt-get install postgresql postgresql-contrib pgadmin3
+  ```
 
 
 ### Location Examples
