@@ -11,6 +11,7 @@ The order matters.
         if( !base::requireNamespace("devtools") ) utils::install.packages("devtools")
         devtools::source_gist("2c5e7459b88ec28b9e8fa0c695b15ee3", filename="package-janitor-bbmc.R")
         package_janitor_remote("https://raw.githubusercontent.com/OuhscBbmc/RedcapExamplesAndPatterns/master/utility/package-dependency-list.csv")
+        
         ````
     1. Run the local R script [`install-packages.R`](https://github.com/OuhscBbmc/RedcapExamplesAndPatterns/blob/master/utility/install-packages.R) (located in the `utility/` directory) that lives in this repository.
 1. **Several R Packages** might need to be updated.  Unless you've been told not to (because it would break something -this is rare), periodically update the packages by executing the following code `update.packages(ask="graphics", checkBuilt=TRUE)`. {added Sept 2012}
@@ -23,16 +24,18 @@ The order does not matter.
 * **[ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server)** is for connecting to the [token server](https://github.com/OuhscBbmc/REDCapR/blob/master/vignettes/SecurityDatabase.Rmd), if your institution is using one.  As of this writing, version 17 is the most recent driver version.  See if a new one exists. {updated Apr 2018}
 * **[R Tools for Windows](https://cran.r-project.org/bin/windows/Rtools/)** is necessary to build some packages in development hosted on GitHub. {added Feb 2017}
 * **[Notepad++](http://notepad-plus-plus.org/)** is a text editor that allows you look at the raw text files, such as code and CSVs.  For CSVs and other data files, it's helpful when troubleshooting (instead of looking at the file through Excel, which masks & causes some issues).  {added Sept 2012}
-* **[Atom](https://atom.io/)** is a text editor, similar to Notepad++.  Notepad++ appears more efficient opening large CSVs.  Atom is better suited when editing a lot of files in a repository.  For finding and replacing across a lot of files, it is superior to Notepad++ and RStudio; it permits regexes and has a great GUI preview of the potential replacements.  Productivity is enchanced with the following [Atom packages](https://atom.io/packages):
+* **[Atom](https://atom.io/)** is a text editor, similar to Notepad++.  Notepad++ appears more efficient opening large CSVs.  Atom is better suited when editing a lot of files in a repository.  For finding and replacing across a lot of files, it is superior to Notepad++ and RStudio; it permits regexes and has a great GUI preview of the potential replacements.  
 
-    * [Sublime Style Column Selection](https://atom.io/packages/Sublime-Style-Column-Selection): Enable Sublime style 'Column Selection'. Just hold 'alt' while you select, or select using your middle mouse button.
-    * [atom-language-r](https://atom.io/packages/atom-language-r) allows Atom to recognize files as R.  This prevents spell checking indicators and enable syntax highlighting.  When you need to browse through a lot of scattered R files quickly, Atom's tree panel (on the left) works well.  An older alternative is [language-r](https://atom.io/packages/language-r).
-    * [language-csv](https://atom.io/packages/language-csv): Adds syntax highlighting to [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) files.  The highlighting is nice, and it atomatically disables spell checking lines.
-    * [atom-beautify](https://atom.io/packages/atom-beautify): Beautify HTML, CSS, JavaScript, PHP, Python, Ruby, Java, C, C++, C#, Objective-C, CoffeeScript, TypeScript, Coldfusion, SQL, and more in Atom.
-    * [atom-wrap-in-tag](https://atom.io/packages/atom-wrap-in-tag): wraps tag around selection; just select a word or phrase and hit Alt + Shift + w.
-    * [minimap](https://atom.io/packages/minimap): A preview of the full source code (in the right margin).
-    * [script](https://atom.io/packages/script): Run scripts based on file name, a selection of code, or by line number.
-    * [git-plus](https://atom.io/packages/git-plus): Do git things without the terminal (I don't think this is necessary anymore).
+    Productivity is enchanced with the following [Atom packages](https://atom.io/packages):
+
+    1. [Sublime Style Column Selection](https://atom.io/packages/Sublime-Style-Column-Selection): Enable Sublime style 'Column Selection'. Just hold 'alt' while you select, or select using your middle mouse button.
+    1. [atom-language-r](https://atom.io/packages/atom-language-r) allows Atom to recognize files as R.  This prevents spell checking indicators and enable syntax highlighting.  When you need to browse through a lot of scattered R files quickly, Atom's tree panel (on the left) works well.  An older alternative is [language-r](https://atom.io/packages/language-r).
+    1. [language-csv](https://atom.io/packages/language-csv): Adds syntax highlighting to [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) files.  The highlighting is nice, and it atomatically disables spell checking lines.
+    1. [atom-beautify](https://atom.io/packages/atom-beautify): Beautify HTML, CSS, JavaScript, PHP, Python, Ruby, Java, C, C++, C#, Objective-C, CoffeeScript, TypeScript, Coldfusion, SQL, and more in Atom.
+    1. [atom-wrap-in-tag](https://atom.io/packages/atom-wrap-in-tag): wraps tag around selection; just select a word or phrase and hit Alt + Shift + w.
+    1. [minimap](https://atom.io/packages/minimap): A preview of the full source code (in the right margin).
+    1. [script](https://atom.io/packages/script): Run scripts based on file name, a selection of code, or by line number.
+    1. [git-plus](https://atom.io/packages/git-plus): Do git things without the terminal (I don't think this is necessary anymore).
 
     The packages can be installed through Atom, or through the `apm` utility in the command line:
 
@@ -40,13 +43,29 @@ The order does not matter.
     apm install sublime-style-column-selection atom-language-r language-csv atom-beautify atom-wrap-in-tag minimap script
     ```
 
+    And the following settings keep files consistent among developers.
+
+    1. File | Settings | Editor | Tab Lenght: 2 (As opposed to 3 or 4, used in other conventions)
+    1. File | Settings | Editor | Tab Type: soft (This inserts 2 spaces instead of a tab when 'Tab' is pressed)
+
 * **[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)** is an easy way to access the database and write queries (and transfer the SQL to an R file).   It's not required for the REDCap API, but it's usually necessary when integrating REDCap with other databases.
 
-    Note: here are some non-default changes that faciliate our workflow.  The first three help when we save the database *structure* (not data) on GitHub, so we can easily track/monitor the structual changes over time.  The fourth makes the [result font bigger](https://blog.sqlauthority.com/2016/05/31/sql-server-ssms-tip-get-larger-fonts-results-grid-output/).  In the SSMS 'Tools | Options' dialog box:
+    Note: here are some non-default changes that faciliate our workflow.  The first two help when we save the database *structure* (not data) on GitHub, so we can easily track/monitor the structual changes over time.    The *tabs* options keeps things consistent between editors.  In the SSMS 'Tools | Options' dialog box:
     1. 'SQL Server Object Explorer' | 'Scripting' | 'Include descriptive headers': False
     1. 'SQL Server Object Explorer' | 'Scripting' | 'Script extended properties': False
+    1. 'Text Editor' | 'All Languages' | 'Tabs' | 'Tab size': 2
+    1. 'Text Editor' | 'All Languages' | 'Tabs' | 'Indent size': 2
+    1. 'Text Editor' | 'All Languages' | 'Tabs' | 'Insert Spaces': selected
+    
+    These don't affect the saved files, but make life easier.  The first makes the [result font bigger](https://blog.sqlauthority.com/2016/05/31/sql-server-ssms-tip-get-larger-fonts-results-grid-output/).
+    1. 'Environment' | 'Fonts and Colors' | 'Show settings for: Grid Results' | 'Size': 10
+    1. 'Query Results' | 'SQL Server' | 'Results to Grid' | 'Include column headers when copying or saving the results': checked
     1. 'Designers' | 'Table and Databas Designers' | 'Prevent saving changes that require table-recreation': unchecked
-    1. 'Environment' | 'Fonts and Colors' | 'Show settings for: Grid Results'
+    
+    1. 'Text Editor' | 'Editor Tab and Status Bar' | 'Tab Text' | 'Include Server Name': false
+    1. 'Text Editor' | 'Editor Tab and Status Bar' | 'Tab Text' | 'Include Database Name': false
+    1. 'Text Editor' | 'Editor Tab and Status Bar' | 'Tab Text' | 'Include Login Name': false
+    1. 'Text Editor' | 'All Languages' | 'General' | 'Line Numbers': true
 
     For more details, see [setting-up-dev-machine.md](https://github.com/OuhscBbmc/bbmc-database-management/blob/master/maintenance/setting-up-server/setting-up-dev-machine.md) (in a private repo that's restricted to BBMC members).
 
@@ -64,6 +83,11 @@ The order does not matter.
     1. Associate the file with `git config --global http.sslCAInfo ...path.../ca-bundle-gitlab.cer` (but replace `...path...`).
 * **[MiKTeX](http://miktex.org/)** is necessary only if you're using knitr or Sweave to produce *LaTeX* files (and not just *markdown* files).  It's a huge, slow installation that can take an hour or two.  {added Sept 2012}
 * **[LibreOffice Calc](https://www.libreoffice.org/discover/calc/)** is an alternative to Excel.  Unlike it Excel, it doesn't guess much with formatting (which usually mess up things, especially dates).
+* **[Visual Studio Code](https://code.visualstudio.com/)** is an extensible text editor that runs on Windows and Linux, similar to [Atom](https://atom.io/) (described above).  It's much [lighter](https://stackoverflow.com/questions/30527522/what-are-the-differences-between-visual-studio-code-and-visual-studio) than the full [Visual Studio](https://visualstudio.microsoft.com/).  Like Atom, it supports browsing through the directory structure, replacing across files, interaction with git, and previewing markdown.  Currently, it supports searching CSVs better than Atom.  Productivity is enchanced with the following extensions:  {added Dec 2018}
+    * [Excel Viewer](https://marketplace.visualstudio.com/items?itemName=GrapeCity.gc-excelviewer) isn't a good name, but I've liked the capability.  It displays CSVs and other files in a grid. {added Dec 2018}
+    * [Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) color codes the columns, but still allows you to see and edit the raw plain-text file. {added Dec 2018}
+    * [SQL Server](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) allows you to execute against a database, and view/copy/save the grid results.  It doesn't replicate all SSMS features, but is nice as your scanning through files. {added Dec 2018}
+    * [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) produces  green squiggly lines under words not in its dictionary.  You can add words to your user dictionary, or a project dictionary.
 * **[pandoc](http://johnmacfarlane.net/pandoc/)** converts files from one markup format into another.  We'll possibly use this to create tables in MS Word (for article submissions). {added Sept 2012}
 
 
@@ -101,6 +125,11 @@ Ubuntu desktop 17.04 follows [these instructions](https://askubuntu.com/a/862520
 
   # The 'sys' package
   sudo apt-get install libapparmor-dev
+
+  # The 'sf' and other spatial packages: https://github.com/r-spatial/sf#ubuntu
+  sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+  sudo apt-get update
+  sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev libgeos++-dev
 
   # Some package I forgot, maybe 'svglite'
   sudo apt-get install libcairo2-dev
