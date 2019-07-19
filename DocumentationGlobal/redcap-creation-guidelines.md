@@ -55,3 +55,13 @@ Here's is our advice.  Within each category, they're listed in roughly descendin
 
 ### Validation
 {I'm going to let our validation mechanism mature more before writing about it.}
+
+# FAQ
+
+1. **How does REDCap store data values?**
+
+    There aren't individual/isolated tables per project.  REDCap's data table is a huge [EAV](https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model)) table where all the projects are stacked on top of each other.  Very similar to how EMRs store obs/observations for all clinics/forms/patients in a single table.  Super-duper normalized table.
+
+     That's why non-superusers (without any [DDL](https://www.geeksforgeeks.org/sql-ddl-dml-dcl-tcl-commands/) permissions) can create their own projects.  The structure of the data table doesn't change when they add "columns", because variables are stored as additional rows in the underlying REDCap table.  REDCap's PHP pivots/widens the EAV table right before displaying the values to the user in a browser; the PHP unpivots/lengthens  the modified data before storing it back in the EAV table.
+     
+     The data table has a `project_id` column, which allows REDCap to enforce which users can read/modify which values.
