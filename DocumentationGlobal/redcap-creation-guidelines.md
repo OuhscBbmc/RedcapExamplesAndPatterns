@@ -43,6 +43,52 @@ Here's is our advice.  Within each category, they're listed in roughly descendin
     * Pick a style guide.  For R, the current trend is towards [Hadley's](http://r-pkgs.had.co.nz/style.html) and [Google's](https://google.github.io/styleguide/Rguide.xml) conventions, and conveniently this works well with REDCap's prohibition of capital letters. {Added by Will, 2015-10.}
     * REDCap's wide format frequently has to be normalized (ie, converted from wide to tall).  This frequently requires regexes, so consider which names are most conveniently handled by a regex.  For example the collection (`iq_initial_age_2` ... `iq_year_5_age_12`) is less desirable than (`iq_year_0_age_02`...`iq_year_5_age_12`).  "Initial" has to be converted to a number, and because `age_2` isn't padded to `age_02`, you might have to brush up on greedy, lazy, and possessive regex matches. {Added by Will, 2015-10.}
 
+### SQL Fields
+
+Here's a quick example of the SQL code underneath a SQL lookup field.  This scenario has two REDCap projects.  In the main ('child') project, each record is a CPS referral; each referral record references the assigned CPS worker.  In the 'parent' project, each record is one of ~100 DHS worker; a portion includes the ~20 CPS workers; the parent project essentially serves as a lookup table to the main/child project.  The dropdown in the main/child project should present only the 20 CPS workers (and not rely on the user to know who is CPS and who is non-CPS).
+
+Notice the `redcap_data`  is joined to itself (with aliases `a` and `b`).  The `a` table retrieves the parent values that will be stored in the child projects; the `b` table is used so only CPS workers are shown, and not any non-CPS workers (the numeric value for a CPS worker in the parent project is '1').
+
+The SELECT clause should have two columns.  The first value will be stored in the child project; the second will be presented in the dropdown box.  It can be arbitrarily complex; many times we'll LEFT JOIN a `c` table for the sake of presenting additional context to the user when selecting from the dropdown box.
+
+```sql
+SELECT
+  a.record,
+  a.value
+FROM redcap_data a
+  LEFT JOIN redcap_data b ON
+    (a.project_id = b.project_id)
+    AND
+    (a.record = b.record)
+    AND
+    (a.event_id = b.event_id)
+WHERE
+  (a.project_id = 666)                -- the REDCap pid for the parent/provider project
+  AND
+  (a.field_name = 'provider_name')
+  AND
+  (b.field_name = 'provider_role')
+  AND
+  (b.value = '1')                     -- the provider code for 'cps worker'
+ORDER BY a.value
+```
+
+Thomas is good about thinking through the interface from the user's perspective, and therefore frequently adds additional links to an item's 'Field Label'.  For example, these two links allow the user to quickly jump to the parent project.  If the user has privileges in the parent project, they'll be able to read and/or modify the records.  Consider granting privileges to the parent project to only a subset of well-trained users (and not to all users) because their mistakes could mess up a bunch of new and existing records/pointers in the child project.
+
+```html
+<font size = "1" color="purple">
+  Click the links below to go to the provider project to add or modify the worker/supervisor provider information.
+</font>
+
+<a href="https://bbmc.ouhsc.edu/redcap/redcap_v6.1.2/DataEntry/index.php?pid=666&page=provider_information">
+  Add a New Provider
+</a>
+
+<a href="https://bbmc.ouhsc.edu/redcap/redcap_v6.1.2/DataExport/index.php?pid=666&report_id=1017">
+  Find and Modify Provider Info
+</a>
+```
+Finally, REDCap is frequently adding new capabilities, including some complex features that combine sql lookup fields and smart variables.  Consult  Thomas if there's something you are facing constraints with the features mentioned above. {Added 2019-07}
 
 ### Reports, Media, Surveys, Whatever
 {Create a category and add bullets when you think of some.}
@@ -64,4 +110,4 @@ Here's is our advice.  Within each category, they're listed in roughly descendin
 
      That's why non-superusers (without any [DDL](https://www.geeksforgeeks.org/sql-ddl-dml-dcl-tcl-commands/) permissions) can create their own projects.  The structure of the data table doesn't change when they add "columns", because variables are stored as additional rows in the underlying REDCap table.  REDCap's PHP pivots/widens the EAV table right before displaying the values to the user in a browser; the PHP unpivots/lengthens  the modified data before storing it back in the EAV table.
      
-     The data table has a `project_id` column, which allows REDCap to enforce which users can read/modify which values.
+     The data table has a `project_id` column, which allows REDCap to enforce which users can read/modify which values.  {Added 2019-07)
