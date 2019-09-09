@@ -1,7 +1,7 @@
 package_name,on_cran,install,github_username,description
 broom,TRUE,TRUE,,"Modeling helpers"
 car,TRUE,TRUE,,"Accompanies Fox, J. and Weisberg, S., An R Companion to Applied Regression."
-checkmate,FALSE,TRUE,mllg,"Checks/asserts values."
+checkmate,TRUE,TRUE,mllg,"Checks/asserts values."
 classInt,TRUE,TRUE,,"Choosing univariate class intervals for mapping or other graphics purposes."
 coda,TRUE,TRUE,,"MCMC monitoring."
 colorspace,TRUE,TRUE,,"Explicit control over the HCL color scheme."
