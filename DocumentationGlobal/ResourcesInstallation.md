@@ -93,7 +93,7 @@ The order does not matter.
 
 ### Ubuntu
 
-Ubuntu desktop 17.04 follows [these instructions](https://askubuntu.com/a/862520/153921) for the R and RStudio and required these debian packages to be installed before the R packages.
+Ubuntu desktop 19.04 follows [these instructions](https://askubuntu.com/a/862520/153921) for the R and RStudio and required these debian packages to be installed before the R packages.  The `--yes` option avoids manual confirmation for each line, so you can copy & paste this into the terminal.
 
   ```sh
   # Git
@@ -103,50 +103,50 @@ Ubuntu desktop 17.04 follows [these instructions](https://askubuntu.com/a/862520
   git config --global credential.helper 'cache --timeout=3600000'
 
   # The 'xml2' package:
-  sudo apt-get install libxml2-dev r-cran-xml
+  sudo apt-get --yes install libxml2-dev r-cran-xml
 
   # The 'curl' package, and others
-  sudo apt-get install libssl-dev libcurl4-openssl-dev
+  sudo apt-get --yes install libssl-dev libcurl4-openssl-dev
 
   # The 'udunits2' package: https://cran.r-project.org/web/packages/udunits2/index.html
-  sudo apt-get install libudunits2-dev
+  sudo apt-get --yes install libudunits2-dev
 
   # The 'odbc' package: https://github.com/r-dbi/odbc#linux---debian--ubuntu
-  sudo apt-get install unixodbc-dev tdsodbc odbc-postgresql libsqliteodbc
+  sudo apt-get --yes install unixodbc-dev tdsodbc odbc-postgresql libsqliteodbc
 
   # The 'rgl' package
-  sudo apt-get install libcgal-dev libglu1-mesa-dev libglu1-mesa-dev
+  sudo apt-get --yes install libcgal-dev libglu1-mesa-dev libglu1-mesa-dev
 
   # The 'magick' package
-  sudo apt-get install 'libmagick++-dev'
+  sudo apt-get --yes install 'libmagick++-dev'
 
   # The 'pdftools' and 'Rpoppler' packages, which involve PDFs
-  sudo apt-get install libpoppler-cpp-dev libpoppler-glib-dev
+  sudo apt-get --yes install libpoppler-cpp-dev libpoppler-glib-dev
 
   # The 'sys' package
-  sudo apt-get install libapparmor-dev
+  sudo apt-get --yes install libapparmor-dev
 
   # The 'sf' and other spatial packages: https://github.com/r-spatial/sf#ubuntu
   sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
   sudo apt-get update
-  sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev libgeos++-dev
+  sudo apt-get --yes install libudunits2-dev libgdal-dev libgeos-dev libproj-dev libgeos++-dev
 
   # Some package I forgot, maybe 'svglite'
-  sudo apt-get install libcairo2-dev
+  sudo apt-get --yes install libcairo2-dev
 
   # 'rJava' and others
-  sudo apt-get install default-jre default-jdk
+  sudo apt-get --yes install default-jre default-jdk
   sudo R CMD javareconf
-  sudo apt-get install r-cran-rjava
+  sudo apt-get --yes install r-cran-rjava
 
   # The 'sf' and other spatial packages: https://github.com/r-spatial/sf#ubuntu
   sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
   sudo apt-get update
-  sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+  sudo apt-get --yes install libudunits2-dev libgdal-dev libgeos-dev libproj-dev
 
   # For databases
-  sudo apt-get install sqlite sqliteman
-  sudo apt-get install postgresql postgresql-contrib pgadmin3
+  sudo apt-get --yes install sqlite sqliteman
+  sudo apt-get --yes install postgresql postgresql-contrib pgadmin3
   ```
 
 
