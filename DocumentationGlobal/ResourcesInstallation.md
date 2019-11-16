@@ -15,7 +15,7 @@ The order matters.
         )
         
         ````
-    1. Run the local R script [`install-packages.R`](https://github.com/OuhscBbmc/RedcapExamplesAndPatterns/blob/master/utility/install-packages.R) (located in the `utility/` directory) that lives in this repository.
+    1. Run the local R script [`install-packages.R`](https://github.com/OuhscBbmc/RedcapExamplesAndPatterns/blob/master/utility/install-packages.R) (located in the `utility/` directory) that lives in this repository.  The workhorse of this function is [`OuhscMunge::package_janitor()`](https://github.com/OuhscBbmc/OuhscMunge/blob/master/R/package-janitor.R).
 1. **Several R Packages** might need to be updated.  Unless you've been told not to (because it would break something -this is rare), periodically update the packages by executing the following code `update.packages(ask="graphics", checkBuilt=TRUE)`. {added Sept 2012}
 1. **[GitHub](https://github.com/)** registration is necessary to push modified files to the repository.    First, register a free user account at https://github.com/plans.  Then tell the repository owner your exact username, and they'll add you as a collaborator  (eg, to https://github.com/OuhscBbmc/RedcapExamplesAndPatterns). {added Sept 2012}
 1. **[GitHub for Windows Client](http://windows.github.com/)** does the basic tasks a little easier the git features built into RStudio.  {added Oct 2012}
@@ -120,19 +120,29 @@ This next block can be copied and pasted (ctrl-shift-v) into the console [entire
 
 ```sh
 ( function install-packages {
-  # Add the key, update the list, then install base R.
+  ### Add the key, update the list, then install base R.
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
   sudo apt-get update
   sudo apt-get install r-base
   sudo apt-get install r-base-dev
   
-  # Git
+  ### Git
   sudo apt-get install git-core
   git config --global user.email "wibeasley@hotmail.com"
   git config --global user.name "Will Beasley"
   git config --global credential.helper 'cache --timeout=3600000'
 
-  # CRAN packages on the Ubuntu repositories
+  ### Ubuntu & Bioconductor packages that are indirectly needed for packages and BBMC scripts
+
+  # Supports the `locate` command in bash
+  sudo apt-get install mlocate
+
+  # The genefilter package is needed for 'modeest' on CRAN.
+  Rscript -e 'BiocManager::install("genefilter")'
+
+
+  
+  ### CRAN packages that are also on the Ubuntu repositories
   
   # The 'xml2' package:
   sudo apt-get --yes install libxml2-dev r-cran-xml
@@ -175,6 +185,9 @@ This next block can be copied and pasted (ctrl-shift-v) into the console [entire
   sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
   sudo apt-get update
   sudo apt-get --yes install libudunits2-dev libgdal-dev libgeos-dev libproj-dev
+
+  # gifski -apparently the rust compiler is necessary
+  sudo apt-get install cargo
 
   # For databases
   sudo apt-get --yes install sqlite sqliteman
