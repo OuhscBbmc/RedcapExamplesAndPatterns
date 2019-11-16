@@ -99,13 +99,16 @@ Ubuntu desktop 19.04 follows [these instructions](https://askubuntu.com/a/862520
 
 Add the following to the sources with `sudo nano /etc/apt/sources.list`.  The 'eoan' version may be updated; The 'metrocast' part could be modified too from [this list](https://launchpad.net/ubuntu/+archivemirrors).  I found it worked better for a new Ubuntu release than 'cloud.r-project.org'.
 
-```shell
+```sh
 deb http://mirror.metrocast.net/ubuntu/ eoan main 
 deb-src http://mirror.metrocast.net/ubuntu/ eoan main 
 deb http://mirror.metrocast.net/ubuntu/ eoan-backports main restricted universe
 ```
 
-  ```sh  
+This next block can be copied and pasted (ctrl-shift-v) into the console [entirely](https://stackoverflow.com/a/43164204).  Or lines can be pasted individual (without the `( function install-packages {` line, or the last three lines).
+
+```sh
+( function install-packages {
   # Add the key, update the list, then install base R.
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
   sudo apt-get update
@@ -165,6 +168,9 @@ deb http://mirror.metrocast.net/ubuntu/ eoan-backports main restricted universe
   # For databases
   sudo apt-get --yes install sqlite sqliteman
   sudo apt-get --yes install postgresql postgresql-contrib pgadmin3
+}
+install-packages
+)
   ```
 
 
