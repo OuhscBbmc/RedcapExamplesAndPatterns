@@ -90,6 +90,17 @@ The order does not matter.
     * [Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) color codes the columns, but still allows you to see and edit the raw plain-text file. {added Dec 2018}
     * [SQL Server](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) allows you to execute against a database, and view/copy/save the grid results.  It doesn't replicate all SSMS features, but is nice as your scanning through files. {added Dec 2018}
     * [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) produces  green squiggly lines under words not in its dictionary.  You can add words to your user dictionary, or a project dictionary.
+
+    These extensions [can be installed by command line](https://code.visualstudio.com/docs/editor/command-line#_working-with-extensions).
+
+    ```sh
+    code --list-extensions
+    code --install-extension GrapeCity.gc-excelviewer
+    code --install-extension mechatroner.rainbow-csv
+    code --install-extension ms-mssql.mssql
+    code --install-extension streetsidesoftware.code-spell-checker
+    ```
+
 * **[pandoc](http://johnmacfarlane.net/pandoc/)** converts files from one markup format into another.  We'll possibly use this to create tables in MS Word (for article submissions). {added Sept 2012}
 
 
