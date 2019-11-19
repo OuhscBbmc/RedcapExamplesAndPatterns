@@ -138,9 +138,7 @@ This next block can be copied and pasted (ctrl-shift-v) into the console [entire
   sudo apt-get install mlocate
 
   # The genefilter package is needed for 'modeest' on CRAN.
-  Rscript -e 'BiocManager::install("genefilter")'
-
-
+  # No longer a modeest dependency: Rscript -e 'BiocManager::install("genefilter")'
   
   ### CRAN packages that are also on the Ubuntu repositories
   
