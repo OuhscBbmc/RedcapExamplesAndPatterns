@@ -74,4 +74,5 @@ testthat,TRUE,TRUE,,"Heavier testing framework that's good for package developme
 tidyr,TRUE,TRUE,,"Data manipulation; replaces much of reshape2; works w/ magrittr and dplyr well."
 xtable,TRUE,TRUE,,"Formats tables, especially for LaTeX output."
 yaml,TRUE,TRUE,,"Needed for knitr and reports."
+vroom,TRUE,TRUE,,"Reading & writing rectangular data."
 zoo,TRUE,TRUE,,"Time series analysis."
