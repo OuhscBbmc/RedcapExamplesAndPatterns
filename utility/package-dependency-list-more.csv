@@ -1,0 +1,3 @@
+package_name,on_cran,install,github_username,description
+bookdown,TRUE,TRUE,,"markdown syntax for books."
+fs,TRUE,TRUE,,"file system interaction."
