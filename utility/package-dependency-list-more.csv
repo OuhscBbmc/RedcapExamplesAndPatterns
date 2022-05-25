@@ -8,6 +8,7 @@ codified,TRUE,TRUE,,"create output used in conventional publications and reports
 colorspace,TRUE,TRUE,,"Explicit control over the HCL color scheme."
 corrplot,TRUE,TRUE,,"Correlation matrix plot."
 digest,TRUE,TRUE,,"Creates SHA hashes for the recruiting database"
+dint,TRUE,TRUE,,"work with year-quarter, year-month and year-isoweek vectors"
 DT,TRUE,TRUE,rstudio,"An R interface to the DataTables library"
 forcats,TRUE,FALSE,,"Factor helpers."
 flexdashboard,TRUE,TRUE,,"Uses R Markdown to produce a Shiny-esque dashboard"
