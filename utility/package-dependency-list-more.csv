@@ -6,6 +6,7 @@ classInt,TRUE,TRUE,,"Choosing univariate class intervals for mapping or other gr
 coda,TRUE,TRUE,,"MCMC monitoring."
 codified,TRUE,TRUE,,"create output used in conventional publications and reports."
 colorspace,TRUE,TRUE,,"Explicit control over the HCL color scheme."
+comorbidity,TRUE,TRUE,,"Computing comorbidity indices and scores such as the weighted Charlson score."
 corrplot,TRUE,TRUE,,"Correlation matrix plot."
 digest,TRUE,TRUE,,"Creates SHA hashes for the recruiting database"
 dint,TRUE,TRUE,,"work with year-quarter, year-month and year-isoweek vectors"
