@@ -1,4 +1,5 @@
 package_name,on_cran,install,github_username,description
+arrow,TRUE,TRUE,,"Similar to an rds file, but language-agnostic."
 BiocManager,TRUE,TRUE,,"install Bioconductor packages."
 bookdown,TRUE,TRUE,,"markdown syntax for books."
 car,TRUE,TRUE,,"Accompanies Fox, J. and Weisberg, S., An R Companion to Applied Regression."
@@ -50,6 +51,7 @@ rpivotTable,TRUE,TRUE,,"Very dynamic HTML table"
 shiny,TRUE,TRUE,,"Web front-end for R"
 shinydashboard,TRUE,TRUE,,"Bootstrap themes for Shiny"
 simPH,TRUE,TRUE,,"Supporting functions for Cox regression."
+striprtf,TRUE,TRUE,,"Extracts plain text from RTF (Rich Text Format)."
 TabularManifest,FALSE,TRUE,Melinae,"Easier EDA functions."
 tidycensus,TRUE,TRUE,,"interface to several United States Census Bureau APIs."
 xtable,TRUE,TRUE,,"Formats tables, especially for LaTeX output."
