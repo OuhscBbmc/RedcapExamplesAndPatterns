@@ -44,6 +44,7 @@ RColorBrewer,TRUE,TRUE,,"Explicit control over the Color Brewer colors.  See htt
 RcppRoll,TRUE,TRUE,,"Optimized window & rolling functions"
 RCurl,TRUE,FALSE,,"Interact with the web APIs."
 RecordLinkage,TRUE,FALSE,,"Matching/linking records."
+rematch2,TRUE,FALSE,,"Tidy Output from regexes."
 reshape2,TRUE,FALSE,,"Data manipulation not covered in plyr."
 rjags,TRUE,FALSE,,"Bayesian software; install: https://cran.r-project.org/web/packages/rjags/INSTALL"
 rmdformats,TRUE,TRUE,juba,"Formats and templates for RMarkdown documents."
